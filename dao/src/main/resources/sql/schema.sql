@@ -1,0 +1,23 @@
+DROP TABLE IF EXISTS clubs;
+CREATE TABLE clubs (
+  id   INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30)
+);
+
+DROP TABLE IF EXISTS positions;
+CREATE TABLE positions (
+  id VARCHAR(10) NOT NULL PRIMARY KEY
+);
+
+DROP TABLE IF EXISTS players;
+CREATE TABLE players (
+  id       INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name     VARCHAR(30),
+  position VARCHAR(10) NOT NULL DEFAULT 'GOALKEEPER',
+  age      INT NOT NULL,
+  height   INT NOT NULL,
+  weight   INT NOT NULL,
+  clubId   INT NOT NULL,
+  FOREIGN KEY (position) REFERENCES positions(id),
+  FOREIGN KEY (clubId) REFERENCES clubs(id)
+);
