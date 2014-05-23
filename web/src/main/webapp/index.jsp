@@ -1,17 +1,55 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="public/style.css"/>
     <title></title>
 </head>
-<body>
+<body class="body">
+<header class="header">
+    <div class="page_content-wrapper">
 
-Hello Admin!
+        <div class="header_user">
+            <a href="http://football.ua/" class="header_link">Sign up</a>
+            <a class="button">Sign in</a>
+        </div>
 
+        <div class="header_logo-wrapper">
+            <a class="header_logo"></a>
+        </div>
 
-<br><a href="mvc/showClubs">Show clubs list (Test commit and "CI" (maven) for jelastic)</a>
-<br><a href="mvc/showPlayers">Show players list</a>
-<br><a href="mvc/addClub">Add club page</a>
-<br><a href="mvc/addPlayer">Add player page</a>
+        <div class="header_form">
+            <form class="form-compact">
+                <div class="form-compact_inner-wrapper">
+                    <div class="form-compact_buttons-placeholder">
+                        <button class="button-search" type="submit">Search</button>
+                    </div>
+                    <div class="form-compact_field-placeholder">
+                        <input type="text" class="form-compact_query" placeholder="Input your search">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</header>
+<nav class="menu_wrapper">
+    <div class="menu_width-wrapper">
+        <div class="menu_relative-wrapper">
+            <ul class="menu_list">
+                <li class="menu_item"><a class="menu_link">Main</a></li>
+                <li class="menu_item"><a class="menu_link">Feed</a></li>
+                <li class="menu_item"><a class="menu_link">Games &amp Tournaments</a></li>
+                <li class="menu_item"><a class="menu_link">Video</a></li>
+                <li class="menu_item"><a class="menu_link">Photo</a></li>
+                <li class="menu_item"><a class="menu_link">Forum</a></li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<div class="background">
+    <section class="page"/>
+</div>
+
 
 </body>
 </html>
