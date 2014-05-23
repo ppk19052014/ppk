@@ -237,3 +237,17 @@
     -moz-box-shadow: 0px 1px 5px rgba(50, 50, 50, 0.75);
     box-shadow: 0px 1px 5px rgba(50, 50, 50, 0.75);
 }
+
+.adminAction {
+    display: block;
+    padding: 8px 7px;
+    line-height: 16px;
+    background: #fdfdfd;
+    border: 1px solid #dfdfdf;
+    border-top: none;
+    width: 200px;
+}
+
+.adminListAction {
+    list-style: none;
+}

@@ -12,7 +12,7 @@
     <c:forEach var="club" items="${allClubs}">
         <tr>
             <td>${club.name}</td>
-            <td><input type="button" value="Edit" onclick="window.location.href='editClub.jsp?clubId=${club.id}'"></td>
+            <td><input type="button" value="Edit" onclick="window.location.href='editClub.jsp'"></td>
         </tr>
     </c:forEach>
 </table>

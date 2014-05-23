@@ -25,7 +25,7 @@
             <td>${player.height}</td>
             <td>${player.weight}</td>
             <td>${player.clubId}</td>
-            <td><input type="button" value="Edit" onclick="window.location.href='editPlayer.jsp?playerId=${player.id}'"></td>
+            <td><input type="button" value="Edit" onclick="window.location.href='editPlayer.jsp'"></td>
         </tr>
     </c:forEach>
 </table>
