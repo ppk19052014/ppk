@@ -1,21 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
-    <title></title>
+    <title>Club list</title>
 </head>
+
 <body>
+
 <header class="header">
     <div class="page_content-wrapper">
-
-        <div class="header_user">
-            <a href="http://football.ua/" class="header_link">Sign up</a>
-            <a href="admin/admin.jsp" class="button">Sign in</a>
-        </div>
-
-        <div class="header_logo-wrapper">
-            <a class="header_logo"></a>
-        </div>
-
         <div class="header_form">
             <form class="form-compact">
                 <div class="form-compact_inner-wrapper">
@@ -46,21 +40,25 @@
 
 </nav>
 <div class="background">
-    <section class="page"/>
+    <section class="page">
+        <form method="post">
+            <table>
+                <tr>
+                    <td>Login: </td>
+                    <td><label>
+                        <input type="text" name="login"/>
+                    </label></td>
+                    <td>Password: </td>
+                    <td><label>
+                        <input type="password" name="password"/>
+                    </label></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Sign in"/></td>
+                </tr>
+            </table>
+        </form>
+    </section>
 </div>
-<%--<form method="post">--%>
-    <%--<table>--%>
-        <%--<tr>--%>
-            <%--<td>Name:</td>--%>
-            <%--<td>--%>
-                <%--<label><input type="text" name="id" value="${editClub.id}" style="display:none;"></label>--%>
-                <%--<label><input type="text" name="name" value="${editClub.name}"/></label>--%>
-            <%--</td>--%>
-        <%--</tr>--%>
-        <%--<tr>--%>
-            <%--<td><input type="submit" value="Edit"/></td>--%>
-        <%--</tr>--%>
-    <%--</table>--%>
-<%--</form>--%>
 </body>
 </html>

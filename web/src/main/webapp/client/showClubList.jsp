@@ -1,9 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
-    <title></title>
+    <title>Club list</title>
 </head>
+
 <body>
+
 <header class="header">
     <div class="page_content-wrapper">
 
@@ -48,19 +52,14 @@
 <div class="background">
     <section class="page"/>
 </div>
-<%--<form method="post">--%>
-    <%--<table>--%>
+<%--<table>--%>
+    <%--<c:forEach var="club" items="${allClubs}">--%>
         <%--<tr>--%>
-            <%--<td>Name:</td>--%>
-            <%--<td>--%>
-                <%--<label><input type="text" name="id" value="${editClub.id}" style="display:none;"></label>--%>
-                <%--<label><input type="text" name="name" value="${editClub.name}"/></label>--%>
-            <%--</td>--%>
+            <%--<td>${club.name}</td>--%>
+            <%--<td><input type="button" value="Edit" onclick="window.location.href='editClub.jsp'"></td>--%>
         <%--</tr>--%>
-        <%--<tr>--%>
-            <%--<td><input type="submit" value="Edit"/></td>--%>
-        <%--</tr>--%>
-    <%--</table>--%>
-<%--</form>--%>
+    <%--</c:forEach>--%>
+<%--</table>--%>
+
 </body>
 </html>
