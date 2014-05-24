@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 
@@ -128,5 +129,16 @@ public class FootballController{
         model.addAttribute("player", playerEdit);
 
         return "editPlayerResult";
+    }
+
+    @RequestMapping(value = "signIn", method = RequestMethod.POST)
+    public String signIn(HttpServletRequest servletRequest) {
+        if("admin".equals(servletRequest.getParameter("login")) && "password".equals(servletRequest.getParameter("password"))){
+            return "admin";
+        }
+        else return "signIn";
+    }
+    @RequestMapping(value = "signIn", method = RequestMethod.GET)
+    public void signIn() {
     }
 }

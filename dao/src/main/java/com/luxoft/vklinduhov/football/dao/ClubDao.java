@@ -21,8 +21,4 @@ public interface ClubDao {
     void removeClubById(int id);
 
     void editClub(Club editClub);
-
-
-
-
 }

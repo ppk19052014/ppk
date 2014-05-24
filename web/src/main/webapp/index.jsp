@@ -9,8 +9,8 @@
     <div class="page_content-wrapper">
 
         <div class="header_user">
-            <a href="http://football.ua/" class="header_link">Sign up</a>
-            <a href="admin/admin.jsp" class="button">Sign in</a>
+            <a href="mvc/signIn" class="header_link">Sign up</a>
+            <a href="mvc/signIn" class="button">Sign in</a>
         </div>
 
         <div class="header_logo-wrapper">
@@ -47,7 +47,7 @@
 
 </nav>
 <div class="background">
-    <section class="page"/>
+    <section class="page"></section>
 </div>
 </body>
 </html>
