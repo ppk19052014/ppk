@@ -138,6 +138,7 @@ public class FootballController{
         }
         else return "signIn";
     }
+
     @RequestMapping(value = "signIn", method = RequestMethod.GET)
     public void signIn() {
     }
