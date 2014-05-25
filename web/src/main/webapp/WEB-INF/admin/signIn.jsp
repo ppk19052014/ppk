@@ -29,9 +29,9 @@
     <div class="menu_width-wrapper">
         <div class="menu_relative-wrapper">
             <ul class="menu_list">
-                <li class="menu_item"><a class="menu_link">Main</a></li>
+                <li class="menu_item"><a href="/index.jsp" class="menu_link">Main</a></li>
                 <li class="menu_item"><a class="menu_link">Feed</a></li>
-                <li class="menu_item"><a class="menu_link">Games &amp Tournaments</a></li>
+                <li class="menu_item"><a href="gamesAndTournaments" class="menu_link">Games &amp Tournaments</a></li>
                 <li class="menu_item"><a class="menu_link">Video</a></li>
                 <li class="menu_item"><a class="menu_link">Photo</a></li>
                 <li class="menu_item"><a class="menu_link">Forum</a></li>
@@ -42,7 +42,7 @@
 </nav>
 <div class="background" style="height: 2000px">
     <section class="page" style="height: 150px; width: 500px">
-        <form method="post">
+        <form method="post" class="signForm">
             <table class="signInTable">
                 <tr>
                     <td>Login:</td>

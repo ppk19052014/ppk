@@ -9,8 +9,8 @@
     <div class="page_content-wrapper">
 
         <div class="header_user">
-            <a href="mvc/signIn" class="header_link">Sign up</a>
-            <a href="mvc/signIn" class="button">Sign in</a>
+            <a href="signIn" class="header_link">Sign up</a>
+            <a href="signIn" class="button">Sign in</a>
         </div>
 
         <div class="header_logo-wrapper">
@@ -37,7 +37,7 @@
             <ul class="menu_list">
                 <li class="menu_item"><a href="/index.jsp" class="menu_link">Main</a></li>
                 <li class="menu_item"><a class="menu_link">Feed</a></li>
-                <li class="menu_item"><a href="mvc/gamesAndTournaments" class="menu_link">Games &amp Tournaments</a></li>
+                <li class="menu_item"><a class="menu_link">Games &amp Tournaments</a></li>
                 <li class="menu_item"><a class="menu_link">Video</a></li>
                 <li class="menu_item"><a class="menu_link">Photo</a></li>
                 <li class="menu_item"><a class="menu_link">Forum</a></li>
@@ -47,7 +47,14 @@
 
 </nav>
 <div class="background">
-    <section class="page"></section>
+    <section class="page">
+        <table>
+            <tr>
+                <td>№</td>
+                <td>Club name</td>
+            </tr>
+        </table>
+    </section>
 </div>
 </body>
 </html>

@@ -142,4 +142,8 @@ public class FootballController{
     @RequestMapping(value = "signIn", method = RequestMethod.GET)
     public void signIn() {
     }
+
+    @RequestMapping(value = "gamesAndTournaments", method = RequestMethod.GET)
+    public void gamesAndTournaments() {
+    }
 }
