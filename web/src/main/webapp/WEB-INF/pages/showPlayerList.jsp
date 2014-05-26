@@ -27,22 +27,32 @@
 </header>
 <div class="background" style="height: 2000px">
     <section class="page" style="height: 250px; width: 600px">
-        <form method="post">
-            <table>
+        <form method="post" action="removePlayer">
+        <table>
+            <tr>
+                <td>Name</td>
+                <%--<td>Position</td>--%>
+                <%--<td>Age</td>--%>
+                <%--<td>Height</td>--%>
+                <%--<td>Weight</td>--%>
+                <%--<td>Club</td>--%>
+            </tr>
+            <c:forEach var="player" items="${allPlayers}">
                 <tr>
-                    <td>Name:</td>
-                    <td>
-                        <label><input type="text" name="id" value="${editClub.id}" style="display:none;"></label>
-                        <label><input type="text" name="name" value="${editClub.name}"/></label>
-                    </td>
+                    <label> <input type="text" name="playerId" value="${player.id}" style="display: none"></label>
+                    <td>${player.name}</td>
+                    <%--<td>${player.position.getName}</td>--%>
+                    <%--<td>${player.age}</td>--%>
+                    <%--<td>${player.height}</td>--%>
+                    <%--<td>${player.weight}</td>--%>
+                    <%--<td>${player.clubName}</td>--%>
+                    <td><input type="button" value="Edit" onclick="window.location.href='editPlayer.jsp?playerId=${player.id}'"></td>
+                    <td><input type="submit" value="Delete"></td>
                 </tr>
-                <tr>
-                    <td><input type="submit" value="Edit"/></td>
-                </tr>
-            </table>
+            </c:forEach>
+        </table>
         </form>
     </section>
 </div>
 </body>
 </html>
-

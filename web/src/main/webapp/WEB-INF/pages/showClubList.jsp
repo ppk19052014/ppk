@@ -27,19 +27,31 @@
 </header>
 <div class="background" style="height: 2000px">
     <section class="page" style="height: 250px; width: 600px">
-        <form method="post">
+        <form method="post" action="removeClub">
             <table>
                 <tr>
-                    <td>Name:</td>
-                    <td><label>
-                        <input type="text" name="name"/>
-                    </label></td>
+                    <td>Name</td>
+                    <%--<td>Found Date</td>--%>
                 </tr>
-                <tr>
-                    <td><input type="submit" value="Add"/></td>
-                </tr>
+                <c:forEach var="club" items="${allClubs}">
+                    <tr>
+                        <label><input type="text" name="clubId" value="${club.id}" style="display: none"></label>
+                        <td>${club.name}</td>
+                        <%--<td>--%>
+                            <%--<label>--%>
+                                <%--<input type="date" name="foundDate" value="${club.foundDate}">--%>
+                            <%--</label>--%>
+                        <%--</td>--%>
+                        <td>
+                            <input type="button" value="Edit"
+                                   onclick="window.location.href='editClub.jsp?clubId=${club.id}'">
+                        </td>
+                        <td><input type="submit" value="Delete"></td>
+                    </tr>
+                </c:forEach>
             </table>
         </form>
+        ${result}
     </section>
 </div>
 </body>

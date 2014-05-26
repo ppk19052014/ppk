@@ -3,8 +3,8 @@ package com.luxoft.vklinduhov.football.mvc;
 import com.luxoft.vklinduhov.football.beans.Club;
 import com.luxoft.vklinduhov.football.beans.Player;
 import com.luxoft.vklinduhov.football.beans.Position;
-import com.luxoft.vklinduhov.football.dao.ClubDao;
-import com.luxoft.vklinduhov.football.dao.PlayerDao;
+import com.luxoft.vklinduhov.football.dao.impl.ClubDaoImpl;
+import com.luxoft.vklinduhov.football.dao.impl.PlayerDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,114 +22,12 @@ import java.util.List;
 public class FootballController{
 
     @Autowired
-    private ClubDao clubDao;
+    private ClubDaoImpl clubDao;
 
     @Autowired
-    private PlayerDao playerDao;
+    private PlayerDaoImpl playerDao;
 
-    @RequestMapping("showClubs")
-    public ModelAndView showClubList(){
-        List<Club> allClubs = clubDao.getAllClubs();
 
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("showClubList");
-        mav.addObject("allClubs", allClubs);
-        return mav;
-    }
-
-    @RequestMapping("showPlayers")
-    public ModelAndView showPlayerList(){
-        List<Player> allPlayers = playerDao.getAllPLayers();
-
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("showPlayerList");
-        mav.addObject("allPlayers", allPlayers);
-        return mav;
-    }
-
-    @RequestMapping(value = "addClub", method = RequestMethod.GET)
-    public ModelAndView club() {
-        return new ModelAndView("addClub");
-    }
-
-    @RequestMapping(value = "addClub", method = RequestMethod.POST)
-    public String addClub(@ModelAttribute Club club, ModelMap model) {
-        clubDao.addClub(club);
-        model.addAttribute("club", club);
-        return "addClubResult";
-    }
-
-    @RequestMapping(value = "addPlayer", method = RequestMethod.GET)
-    public ModelAndView player() {
-        List<Club> allClubs = clubDao.getAllClubs();
-
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("addPlayer");
-        mav.addObject("positionList", Arrays.asList(Position.values()));
-        mav.addObject("clubList", allClubs);
-        return mav;
-    }
-
-    @RequestMapping(value = "addPlayer", method = RequestMethod.POST)
-    public String addPlayer(@ModelAttribute Player p, ModelMap model) {
-
-        playerDao.addPlayer(p);
-        model.addAttribute("name", p);
-
-        return "addPlayerResult";
-    }
-
-    @RequestMapping(value = "editClub", method = RequestMethod.GET)
-    public ModelAndView setEditClubForm(@RequestParam String clubId) {
-
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("editClub");
-        mav.addObject("editClub", clubDao.getClubById(Integer.valueOf(clubId)));
-
-        return mav;
-    }
-
-    @RequestMapping(value = "editClub", method = RequestMethod.POST)
-    public String editClub(@ModelAttribute Club club, ModelMap model) {
-
-        Club editClub = clubDao.getClubById(club.getId());
-        editClub.setName(club.getName());
-        clubDao.editClub(editClub);
-        model.addAttribute("club", editClub);
-
-        return "editClubResult";
-    }
-
-    @RequestMapping(value = "editPlayer", method = RequestMethod.GET)
-    public ModelAndView setEditPlayerForm(@RequestParam String playerId) {
-
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("editPlayer");
-
-        List<Club> allClubs = clubDao.getAllClubs();
-
-        mav.addObject("positionList", Arrays.asList(Position.values()));
-        mav.addObject("clubList", allClubs);
-        mav.addObject("editPlayer", playerDao.getPlayerById(Integer.valueOf(playerId)));
-
-        return mav;
-    }
-
-    @RequestMapping(value = "editPlayer", method = RequestMethod.POST)
-    public String editPlayer(@ModelAttribute Player player, ModelMap model) {
-
-        Player playerEdit = playerDao.getPlayerById(player.getId());
-        playerEdit.setName(player.getName());
-        playerEdit.setPosition(player.getPosition());
-        playerEdit.setAge(player.getAge());
-        playerEdit.setHeight(player.getHeight());
-        playerEdit.setWeight(player.getWeight());
-        playerEdit.setClubId(player.getClubId());
-
-        model.addAttribute("player", playerEdit);
-
-        return "editPlayerResult";
-    }
 
     @RequestMapping(value = "signIn", method = RequestMethod.POST)
     public String signIn(HttpServletRequest servletRequest) {
@@ -142,6 +40,117 @@ public class FootballController{
     @RequestMapping(value = "signIn", method = RequestMethod.GET)
     public void signIn() {
     }
+
+
+
+    @RequestMapping(value = "showClubs", method = RequestMethod.GET)
+    public ModelAndView showClubList(){
+        List<Club> allClubs = clubDao.getAll();
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("showClubList");
+        mav.addObject("allClubs", allClubs);
+        return mav;
+    }
+
+    @RequestMapping(value = "addClub", method = RequestMethod.GET)
+    public ModelAndView club() {
+        return new ModelAndView("addClub");
+    }
+
+    @RequestMapping(value = "addClub", method = RequestMethod.POST)
+    public String addClub(@ModelAttribute Club club, ModelMap model) {
+        clubDao.create(club);
+        model.addAttribute("result", "Club " + club + " is added");
+        return "addClub";
+    }
+
+    @RequestMapping(value = "editClub", method = RequestMethod.GET)
+    public ModelAndView setEditClubForm(@RequestParam String clubId) {
+
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("editClub");
+        mav.addObject("editClub", clubDao.read(clubId));
+
+        return mav;
+    }
+
+    @RequestMapping(value = "editClub", method = RequestMethod.POST)
+    public String editClub(@ModelAttribute Club club, ModelMap model) {
+        clubDao.update(club);
+        model.addAttribute("result", "Club " + club + " is edited");
+        return "editClub";
+    }
+
+    @RequestMapping(value = "removeClub", method = RequestMethod.POST)
+    public ModelAndView removeClub(@RequestParam String clubId) {
+        String name = clubDao.read(clubId).getName();
+        clubDao.delete(clubId);
+        ModelAndView mav = showClubList();
+        mav.addObject("result", "Club " + name + " is deleted");
+        return mav;
+    }
+
+
+
+    @RequestMapping("showPlayers")
+    public ModelAndView showPlayerList(){
+        List<Player> allPlayers = playerDao.getAll();
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("showPlayerList");
+        mav.addObject("allPlayers", allPlayers);
+        return mav;
+    }
+
+    @RequestMapping(value = "addPlayer", method = RequestMethod.GET)
+    public ModelAndView player() {
+        List<Club> allClubs = clubDao.getAll();
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("addPlayer");
+        mav.addObject("player",new Player());
+        mav.addObject("positionList", Arrays.asList(Position.values()));
+        mav.addObject("clubList", allClubs);
+        return mav;
+    }
+
+    @RequestMapping(value = "addPlayer", method = RequestMethod.POST)
+    public String addPlayer(@ModelAttribute("player") Player player, ModelMap model) {
+        playerDao.create(player);
+        List<Club> allClubs = clubDao.getAll();
+        model.addAttribute("positionList", Arrays.asList(Position.values()));
+        model.addAttribute("clubList", allClubs);
+        model.addAttribute("result", "Player " + player + " is added");
+        return "addPlayer";
+    }
+
+    @RequestMapping(value = "editPlayer", method = RequestMethod.GET)
+    public ModelAndView setEditPlayerForm(@RequestParam String playerId) {
+
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("editPlayer");
+
+        List<Club> allClubs = clubDao.getAll();
+
+        mav.addObject("positionList", Arrays.asList(Position.values()));
+        mav.addObject("clubList", allClubs);
+        mav.addObject("editPlayer", playerDao.read(playerId));
+
+        return mav;
+    }
+
+    @RequestMapping(value = "editPlayer", method = RequestMethod.POST)
+    public String editPlayer(@ModelAttribute Player player, ModelMap model) {
+        playerDao.update(player);
+        model.addAttribute("result", "Player " + player + " is edited");
+        return "editPlayer";
+    }
+
+    @RequestMapping(value = "removePlayer", method = RequestMethod.POST)
+    public ModelAndView removePlayer(@RequestParam String playerId) {
+        playerDao.delete(playerId);
+        return showPlayerList();
+    }
+
+
 
     @RequestMapping(value = "gamesAndTournaments", method = RequestMethod.GET)
     public void gamesAndTournaments() {

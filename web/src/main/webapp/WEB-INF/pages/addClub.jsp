@@ -27,7 +27,30 @@
 </header>
 <div class="background" style="height: 2000px">
     <section class="page" style="height: 250px; width: 600px">
-        Club ${club} is edited
+        <form method="post">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <label>
+                            <input type="text" name="name"/>
+                        </label>
+                    </td>
+                </tr>
+                <%--<tr>--%>
+                    <%--<td>Found Date:</td>--%>
+                    <%--<td>--%>
+                        <%--<label>--%>
+                            <%--<input type="date" name="fountDate"/>--%>
+                        <%--</label>--%>
+                    <%--</td>--%>
+                <%--</tr>--%>
+                <tr>
+                    <td><input type="submit" value="Add"/></td>
+                </tr>
+            </table>
+        </form>
+        <label>${result}</label>
     </section>
 </div>
 </body>

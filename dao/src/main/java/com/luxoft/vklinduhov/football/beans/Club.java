@@ -1,33 +1,25 @@
 package com.luxoft.vklinduhov.football.beans;
 
-public class Club {
+import org.springframework.data.mongodb.core.mapping.Document;
 
-    private int id;
+import java.util.Date;
+
+@Document(collection = "clubs")
+public class Club extends AbstractEntity{
+
     private String name;
+//    private Date foundDate;
 
     public Club() {
-    }
-
-    public Club(int id) {
-        this.id = id;
-        //throw new RuntimeException("idCounter++ in Club()");
     }
 
     public Club(String name) {
         this.name = name;
     }
 
-    public Club(int id, String name) {
+    public Club(String id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -38,6 +30,14 @@ public class Club {
         this.name = name;
     }
 
+//    public Date getFoundDate() {
+//        return foundDate;
+//    }
+//
+//    public void setFoundDate(Date foundDate) {
+//        this.foundDate = foundDate;
+//    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,7 +45,6 @@ public class Club {
 
         Club club = (Club) o;
 
-        if (id != club.id) return false;
         if (name != null ? !name.equals(club.name) : club.name != null) return false;
 
         return true;
@@ -53,9 +52,7 @@ public class Club {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
+        return name != null ? name.hashCode() : 0;
     }
 
     @Override

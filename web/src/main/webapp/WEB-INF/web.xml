@@ -18,7 +18,6 @@
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-
         <load-on-startup>1</load-on-startup>
     </servlet>
 

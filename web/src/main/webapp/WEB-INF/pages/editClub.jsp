@@ -27,8 +27,29 @@
 </header>
 <div class="background" style="height: 2000px">
     <section class="page" style="height: 250px; width: 600px">
-        Player ${player} is edited
+        <form method="post">
+            <table>
+                <tr>
+                    <label><input type="text" name="id" value="${editClub.id}" style="display:none;"></label>
+                    <td>Name:</td>
+                    <td>
+                        <label><input type="text" name="name" value="${editClub.name}"/></label>
+                    </td>
+                </tr>
+                <%--<tr>--%>
+                    <%--<td>Found Date:</td>--%>
+                    <%--<td>--%>
+                        <%--<label><input type="date" name="foundDate" value="${editClub.foundDate}"/></label>--%>
+                    <%--</td>--%>
+                <%--</tr>--%>
+                <tr>
+                    <td><input type="submit" value="Edit"/></td>
+                </tr>
+            </table>
+        </form>
+        <label>${result}</label>
     </section>
 </div>
 </body>
 </html>
+

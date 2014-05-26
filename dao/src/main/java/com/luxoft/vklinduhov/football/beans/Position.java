@@ -7,7 +7,7 @@ package com.luxoft.vklinduhov.football.beans;
 
 public enum Position {
 
-    GOALKEEPER("GOALKEEPER"), DEFENDER("DEFENDER"), MIDFIELDER("MIDFIELDER"), FORWARD("FORWARD");
+    GOALKEEPER("Goalkeeper"), DEFENDER("Defender"), MIDFIELDER("Midfielder"), FORWARD("Forward");
 
     private String id;
 
