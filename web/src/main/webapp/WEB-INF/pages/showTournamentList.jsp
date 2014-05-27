@@ -27,12 +27,27 @@
 </header>
 <div class="background" style="height: 2000px">
     <section class="page" style="height: 250px; width: 600px">
-        <br><a href="showClubs">Show clubs list</a>
-        <br><a href="addClub">Add club page</a>
-        <br><a href="showPlayers">Show players list</a>
-        <br><a href="addPlayer">Add player page</a>
-        <br><a href="showTournaments">Show tournaments list</a>
-        <br><a href="addTournament">Add tournaments page</a>
+        <form method="post">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>Country</td>
+                </tr>
+                <c:forEach var="tournament" items="${tournamentList}">
+                    <tr>
+                        <label> <input type="text" name="tournamentId" value="${tournament.id}" style="display: none"></label>
+                        <td>${tournament.name}</td>
+                        <td>${tournament.country}</td>
+                        <td>
+                            <input type="button" value="Edit"
+                                   onclick="window.location.href='editTournament.jsp?tournamentId=${tournament.id}'">
+                        </td>
+                        <td><input type="submit" value="Delete"></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </form>
+        ${result}
     </section>
 </div>
 </body>

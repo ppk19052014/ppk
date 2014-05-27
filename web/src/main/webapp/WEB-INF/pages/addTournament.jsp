@@ -37,24 +37,11 @@
                         </label>
                     </td>
                 </tr>
-                <%--<tr>--%>
-                    <%--<td>Found Date:</td>--%>
-                    <%--<td>--%>
-                        <%--//todo: do this like others fields--%>
-                        <%--<label>--%>
-                            <%--<input type="date" name="foundDate" id="foundDate"/>--%>
-                        <%--</label>--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
                 <tr>
-                    <td>Tournament:</td>
+                    <td>Country:</td>
                     <td>
                         <label>
-                            <select name="tournamentId">
-                                <c:forEach var="tournament" items="${tournamentList}">
-                                    <option value="${tournament.id}" selected>${tournament.name}</option>
-                                </c:forEach>
-                            </select>
+                            <input type="text" name="country"/>
                         </label>
                     </td>
                 </tr>

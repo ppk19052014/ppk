@@ -34,57 +34,54 @@
                     <td>Name:</td>
                     <td><label>
                         <input type="text" name="name">
-                    </label></td>
-
+                    </label>
+                    </td>
                 </tr>
-                <%--<tr>--%>
-                    <%--<td>Position:</td>--%>
-                    <%--<td>--%>
-                        <%--<label>--%>
-                            <%--<select name="positionSelect">--%>
-                                <%--<c:forEach var="position" items="${positionList}">--%>
-                                    <%--<option value="${position}">${position}</option>--%>
-                                <%--</c:forEach>--%>
-                            <%--</select>--%>
-                        <%--</label>--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
-                <%--<tr>--%>
-                    <%--<td>Age:</td>--%>
-                    <%--<td>--%>
-                        <%--<label>--%>
-                            <%--<select name="ageSelect">--%>
-                                <%--<c:forEach var="i" begin="16" end="50">--%>
-                                    <%--<option value="${i}">${i}</option>--%>
-                                <%--</c:forEach>--%>
-                            <%--</select>--%>
-                        <%--</label>--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
+                <tr>
+                    <td>Position:</td>
+                    <td><label>
+                        <input type="text" name="position">
+                    </label>
+                    </td>
+                </tr>
+<%--                <tr>
+                    <td>Age:</td>
+                    <td>
+                        <label>
+                            <select name="age">
+                                <c:forEach var="i" begin="16" end="50">
+                                    <option value="${i}">${i}</option>
+                                </c:forEach>
+                            </select>
+                        </label>
+                    </td>
+                </tr>--%>
                 <%--<tr>--%>
                     <%--<td>Height:</td>--%>
                     <%--<td><label>--%>
                         <%--<input type="text" name="height" value="180">--%>
-                    <%--</label></td>--%>
+                    <%--</label>--%>
+                    <%--</td>--%>
                 <%--</tr>--%>
                 <%--<tr>--%>
                     <%--<td>Weight:</td>--%>
                     <%--<td><label>--%>
                         <%--<input type="text" name="weight" value="80">--%>
-                    <%--</label></td>--%>
-                <%--</tr>--%>
-                <%--<tr>--%>
-                    <%--<td>Club:</td>--%>
-                    <%--<td>--%>
-                        <%--<label>--%>
-                            <%--<select name="clubSelect">--%>
-                                <%--<c:forEach var="club" items="${clubList}">--%>
-                                    <%--<option value="${club.id}" selected>${club.name}</option>--%>
-                                <%--</c:forEach>--%>
-                            <%--</select>--%>
-                        <%--</label>--%>
+                    <%--</label>--%>
                     <%--</td>--%>
                 <%--</tr>--%>
+                <tr>
+                    <td>Club:</td>
+                    <td>
+                        <label>
+                            <select name="clubId">
+                                <c:forEach var="club" items="${clubList}">
+                                    <option value="${club.id}" selected>${club.name}</option>
+                                </c:forEach>
+                            </select>
+                        </label>
+                    </td>
+                </tr>
                 <tr>
                     <td><input type="submit" value="Add"></td>
                 </tr>

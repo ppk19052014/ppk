@@ -30,36 +30,21 @@
         <form method="post">
             <table>
                 <tr>
+                    <label><input type="text" name="id" value="${editTournament.id}" style="display:none;"></label>
                     <td>Name:</td>
                     <td>
-                        <label>
-                            <input type="text" name="name"/>
-                        </label>
+                        <label><input type="text" name="name" value="${editTournament.name}"/></label>
                     </td>
+
                 </tr>
-                <%--<tr>--%>
-                    <%--<td>Found Date:</td>--%>
-                    <%--<td>--%>
-                        <%--//todo: do this like others fields--%>
-                        <%--<label>--%>
-                            <%--<input type="date" name="foundDate" id="foundDate"/>--%>
-                        <%--</label>--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
                 <tr>
-                    <td>Tournament:</td>
+                    <td>Country</td>
                     <td>
-                        <label>
-                            <select name="tournamentId">
-                                <c:forEach var="tournament" items="${tournamentList}">
-                                    <option value="${tournament.id}" selected>${tournament.name}</option>
-                                </c:forEach>
-                            </select>
-                        </label>
+                        <label><input type="text" name="name" value="${editTournament.country}"/></label>
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Add"/></td>
+                    <td><input type="submit" value="Edit"/></td>
                 </tr>
             </table>
         </form>
@@ -68,3 +53,4 @@
 </div>
 </body>
 </html>
+

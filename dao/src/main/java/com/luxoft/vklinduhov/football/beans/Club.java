@@ -1,6 +1,8 @@
 package com.luxoft.vklinduhov.football.beans;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -8,10 +10,16 @@ import java.util.List;
 @Document(collection = "clubs")
 public class Club extends AbstractEntity{
 
+    @Field
     private String name;
+    @Field
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date foundDate;
+    @Field
     private List<Player> playerList;
+    @Field
     private String tournamentId;
+    @Field
     private String tournamentName;
 
     public Club() {

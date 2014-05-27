@@ -1,6 +1,7 @@
 package com.luxoft.vklinduhov.football.beans;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
@@ -11,8 +12,11 @@ import java.util.List;
 @Document(collection = "tournaments")
 public class Tournament extends AbstractEntity{
 
+    @Field
     private String name;
+    @Field
     private String country;
+    @Field
     private List<Club> clubList;
 
     public Tournament() {

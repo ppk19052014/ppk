@@ -1,6 +1,9 @@
 package com.luxoft.vklinduhov.football.beans;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.util.Date;
 
 /**
  * Created by Vklinduhov on 16.01.14.
@@ -9,21 +12,28 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "players")
 public class Player extends AbstractEntity{
 
+    @Field
     private String name;
+    @Field
     private String position;
-    private Integer age;
+    @Field
+    private Date birthsDay;
+    @Field
     private Integer height;
+    @Field
     private Integer weight;
+    @Field
     private String clubId;
+    @Field
     private String clubName;
 
     public Player() {
     }
 
-    public Player(String name, String position, Integer age, Integer height, Integer weight, String clubId) {
+    public Player(String name, String position, Date birthsDay, Integer height, Integer weight, String clubId) {
         this.name = name;
         this.position = position;
-        this.age = age;
+        this.birthsDay = birthsDay;
         this.height = height;
         this.weight = weight;
         this.clubId = clubId;
@@ -45,12 +55,12 @@ public class Player extends AbstractEntity{
         this.position = position;
     }
 
-    public Integer getAge() {
-        return age;
+    public Date getBirthsDay() {
+        return birthsDay;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setBirthsDay(Date birthsDay) {
+        this.birthsDay = birthsDay;
     }
 
     public Integer getHeight() {
@@ -92,13 +102,13 @@ public class Player extends AbstractEntity{
 
         Player player = (Player) o;
 
-        if (age != player.age) return false;
-        if (height != player.height) return false;
-        if (weight != player.weight) return false;
+        if (birthsDay != null ? !birthsDay.equals(player.birthsDay) : player.birthsDay != null) return false;
         if (clubId != null ? !clubId.equals(player.clubId) : player.clubId != null) return false;
         if (clubName != null ? !clubName.equals(player.clubName) : player.clubName != null) return false;
+        if (height != null ? !height.equals(player.height) : player.height != null) return false;
         if (name != null ? !name.equals(player.name) : player.name != null) return false;
-        if (position != player.position) return false;
+        if (position != null ? !position.equals(player.position) : player.position != null) return false;
+        if (weight != null ? !weight.equals(player.weight) : player.weight != null) return false;
 
         return true;
     }
@@ -107,9 +117,9 @@ public class Player extends AbstractEntity{
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (position != null ? position.hashCode() : 0);
-        result = 31 * result + age;
-        result = 31 * result + height;
-        result = 31 * result + weight;
+        result = 31 * result + (birthsDay != null ? birthsDay.hashCode() : 0);
+        result = 31 * result + (height != null ? height.hashCode() : 0);
+        result = 31 * result + (weight != null ? weight.hashCode() : 0);
         result = 31 * result + (clubId != null ? clubId.hashCode() : 0);
         result = 31 * result + (clubName != null ? clubName.hashCode() : 0);
         return result;

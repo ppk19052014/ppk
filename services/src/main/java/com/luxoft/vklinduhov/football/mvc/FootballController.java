@@ -2,9 +2,10 @@ package com.luxoft.vklinduhov.football.mvc;
 
 import com.luxoft.vklinduhov.football.beans.Club;
 import com.luxoft.vklinduhov.football.beans.Player;
-import com.luxoft.vklinduhov.football.beans.Position;
+import com.luxoft.vklinduhov.football.beans.Tournament;
 import com.luxoft.vklinduhov.football.dao.impl.ClubDaoImpl;
 import com.luxoft.vklinduhov.football.dao.impl.PlayerDaoImpl;
+import com.luxoft.vklinduhov.football.dao.impl.TournamentDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -26,6 +29,9 @@ public class FootballController{
 
     @Autowired
     private PlayerDaoImpl playerDao;
+
+    @Autowired
+    private TournamentDaoImpl tournamentDao;
 
 
 
@@ -41,6 +47,54 @@ public class FootballController{
     public void signIn() {
     }
 
+    @RequestMapping(value = "showTournaments", method = RequestMethod.GET)
+    public ModelAndView showTournaments(){
+        List<Tournament> tournamentList = tournamentDao.getAll();
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("showTournamentList");
+        mav.addObject("tournamentList", tournamentList);
+        return mav;
+    }
+
+    @RequestMapping(value = "addTournament", method = RequestMethod.GET)
+    public ModelAndView tournament() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("addTournament");
+        mav.addObject("tournament", new Tournament());
+        return mav;
+    }
+
+    @RequestMapping(value = "addTournament", method = RequestMethod.POST)
+    public String addTournament(@ModelAttribute Tournament tournament, ModelMap model) {
+        tournamentDao.create(tournament);
+        model.addAttribute("result", "Tournament " + tournament + " is added");
+        return "addTournament";
+    }
+
+    @RequestMapping(value = "editTournament", method = RequestMethod.GET)
+    public ModelAndView setEditTournamentForm(@RequestParam String tournamentId) {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("editTournament");
+        mav.addObject("editTournament", tournamentDao.read(tournamentId));
+        return mav;
+    }
+
+    @RequestMapping(value = "editTournament", method = RequestMethod.POST)
+    public String editTournament(@ModelAttribute Tournament tournament, ModelMap model) {
+        tournamentDao.update(tournament);
+        model.addAttribute("result", "Tournament " + tournament + " is edited");
+        return "editTournament";
+    }
+
+    @RequestMapping(value = "showTournaments", method = RequestMethod.POST)
+    public ModelAndView removeTournament(@RequestParam String tournamentId) {
+        String name = tournamentDao.read(tournamentId).getName();
+        tournamentDao.delete(tournamentId);
+        ModelAndView mav = showTournaments();
+        mav.addObject("result", "Tournament " + name + " is deleted");
+        return mav;
+    }
+
 
 
     @RequestMapping(value = "showClubs", method = RequestMethod.GET)
@@ -54,11 +108,27 @@ public class FootballController{
 
     @RequestMapping(value = "addClub", method = RequestMethod.GET)
     public ModelAndView club() {
-        return new ModelAndView("addClub");
+        List<Tournament> tournamentList = tournamentDao.getAll();
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("addClub");
+        mav.addObject("club", new Club());
+        mav.addObject("tournamentList", tournamentList);
+        return mav;
     }
 
     @RequestMapping(value = "addClub", method = RequestMethod.POST)
     public String addClub(@ModelAttribute Club club, ModelMap model) {
+        if(club.getTournamentId() != null){
+            Tournament tournament = tournamentDao.read(club.getTournamentId());
+            club.setTournamentName(tournament.getName());
+            List<Club> clubList = tournament.getClubList();
+            if(clubList == null){
+                clubList = new ArrayList<Club>();
+            }
+            clubList.add(club);
+        }
+        List<Tournament> tournamentList = tournamentDao.getAll();
+        model.addAttribute("tournamentList", tournamentList);
         clubDao.create(club);
         model.addAttribute("result", "Club " + club + " is added");
         return "addClub";
@@ -107,17 +177,24 @@ public class FootballController{
         ModelAndView mav = new ModelAndView();
         mav.setViewName("addPlayer");
         mav.addObject("player",new Player());
-        mav.addObject("positionList", Arrays.asList(Position.values()));
         mav.addObject("clubList", allClubs);
         return mav;
     }
 
     @RequestMapping(value = "addPlayer", method = RequestMethod.POST)
     public String addPlayer(@ModelAttribute("player") Player player, ModelMap model) {
+        if(player.getClubId() != null){
+            Club club = clubDao.read(player.getClubId());
+            player.setClubName(club.getName());
+            List<Player> playerList = club.getPlayerList();
+            if(playerList == null){
+                playerList = new ArrayList<Player>();
+            }
+            playerList.add(player);
+        }
         playerDao.create(player);
-        List<Club> allClubs = clubDao.getAll();
-        model.addAttribute("positionList", Arrays.asList(Position.values()));
-        model.addAttribute("clubList", allClubs);
+        List<Club> clubList = clubDao.getAll();
+        model.addAttribute("clubList", clubList);
         model.addAttribute("result", "Player " + player + " is added");
         return "addPlayer";
     }
@@ -130,7 +207,6 @@ public class FootballController{
 
         List<Club> allClubs = clubDao.getAll();
 
-        mav.addObject("positionList", Arrays.asList(Position.values()));
         mav.addObject("clubList", allClubs);
         mav.addObject("editPlayer", playerDao.read(playerId));
 
