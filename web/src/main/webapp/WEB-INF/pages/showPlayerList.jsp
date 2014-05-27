@@ -27,7 +27,7 @@
 </header>
 <div class="background" style="height: 2000px">
     <section class="page" style="height: 250px; width: 600px">
-        <form method="post" action="removePlayer">
+        <form method="post">
         <table>
             <tr>
                 <td>Name</td>
@@ -52,6 +52,7 @@
             </c:forEach>
         </table>
         </form>
+        ${result}
     </section>
 </div>
 </body>

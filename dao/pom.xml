@@ -31,16 +31,6 @@
             <artifactId>spring-test</artifactId>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>com.h2database</groupId>-->
-            <!--<artifactId>h2</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-jdbc</artifactId>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
@@ -56,18 +46,7 @@
             <artifactId>cglib</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.google.code.morphia</groupId>
-            <artifactId>morphia</artifactId>
-        </dependency>
-
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>Morphia repository</id>
-            <url>http://morphia.googlecode.com/svn/mavenrepo/</url>
-        </repository>
-    </repositories>
 
 </project>

@@ -27,7 +27,7 @@
 </header>
 <div class="background" style="height: 2000px">
     <section class="page" style="height: 250px; width: 600px">
-        <form method="post" action="removeClub">
+        <form method="post">
             <table>
                 <tr>
                     <td>Name</td>
@@ -35,7 +35,7 @@
                 </tr>
                 <c:forEach var="club" items="${allClubs}">
                     <tr>
-                        <label><input type="text" name="clubId" value="${club.id}" style="display: none"></label>
+                        <label> <input type="text" name="clubId" value="${club.id}" style="display: none"></label>
                         <td>${club.name}</td>
                         <%--<td>--%>
                             <%--<label>--%>

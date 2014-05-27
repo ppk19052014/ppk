@@ -81,7 +81,7 @@ public class FootballController{
         return "editClub";
     }
 
-    @RequestMapping(value = "removeClub", method = RequestMethod.POST)
+    @RequestMapping(value = "showClubs", method = RequestMethod.POST)
     public ModelAndView removeClub(@RequestParam String clubId) {
         String name = clubDao.read(clubId).getName();
         clubDao.delete(clubId);
@@ -144,10 +144,13 @@ public class FootballController{
         return "editPlayer";
     }
 
-    @RequestMapping(value = "removePlayer", method = RequestMethod.POST)
+    @RequestMapping(value = "showPlayers", method = RequestMethod.POST)
     public ModelAndView removePlayer(@RequestParam String playerId) {
+        String name = playerDao.read(playerId).getName();
         playerDao.delete(playerId);
-        return showPlayerList();
+        ModelAndView mav = showPlayerList();
+        mav.addObject("result", "Player " + name + " is deleted");
+        return mav;
     }
 
 

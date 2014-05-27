@@ -32,13 +32,9 @@
         <!--<property name="dataSource" ref="dataSource"/>-->
     <!--</bean>-->
 
-    <context:property-placeholder location="classpath:mongodb.properties"/>
-    <mongo:mongo host="${mongo.host}" port="${mongo.port}"/>
-    <mongo:db-factory
-            username="${mongo.username}"
-            password="${mongo.password}"
-            dbname="${mongo.db}"
-            mongo-ref="mongo"/>
+    <context:property-placeholder location="classpath:localhost.mongodb.properties"/>
+    <mongo:mongo id = "mongo" host="${mongo.host}" port="${mongo.port}"/>
+    <mongo:db-factory id = "mongoDbFactory" mongo-ref="mongo" dbname="${mongo.db}" username="${mongo.username}" password="${mongo.password}"/>
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
