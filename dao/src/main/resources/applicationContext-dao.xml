@@ -32,7 +32,7 @@
         <!--<property name="dataSource" ref="dataSource"/>-->
     <!--</bean>-->
 
-    <context:property-placeholder location="classpath:localhost.mongodb.properties"/>
+    <context:property-placeholder location="classpath:jelastic.mongodb.properties"/>
     <mongo:mongo id = "mongo" host="${mongo.host}" port="${mongo.port}"/>
     <mongo:db-factory id = "mongoDbFactory" mongo-ref="mongo" dbname="${mongo.db}" username="${mongo.username}" password="${mongo.password}"/>
 
