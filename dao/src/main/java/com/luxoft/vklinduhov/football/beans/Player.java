@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Player extends AbstractEntity{
 
     private String name;
-    private Position position;
+    private String position;
     private Integer age;
     private Integer height;
     private Integer weight;
@@ -20,7 +20,7 @@ public class Player extends AbstractEntity{
     public Player() {
     }
 
-    public Player(String name, Position position, Integer age, Integer height, Integer weight, String clubId) {
+    public Player(String name, String position, Integer age, Integer height, Integer weight, String clubId) {
         this.name = name;
         this.position = position;
         this.age = age;
@@ -37,11 +37,11 @@ public class Player extends AbstractEntity{
         this.name = name;
     }
 
-    public Position getPosition() {
+    public String getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(String position) {
         this.position = position;
     }
 

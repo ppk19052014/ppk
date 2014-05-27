@@ -13,7 +13,7 @@ public class Tournament extends AbstractEntity{
 
     private String name;
     private String country;
-    private List<Club> memberList;
+    private List<Club> clubList;
 
     public Tournament() {
     }
@@ -34,12 +34,12 @@ public class Tournament extends AbstractEntity{
         this.country = country;
     }
 
-    public List<Club> getMemberList() {
-        return memberList;
+    public List<Club> getClubList() {
+        return clubList;
     }
 
-    public void setMemberList(List<Club> memberList) {
-        this.memberList = memberList;
+    public void setClubList(List<Club> clubList) {
+        this.clubList = clubList;
     }
 
     @Override
@@ -49,8 +49,8 @@ public class Tournament extends AbstractEntity{
 
         Tournament that = (Tournament) o;
 
+        if (clubList != null ? !clubList.equals(that.clubList) : that.clubList != null) return false;
         if (country != null ? !country.equals(that.country) : that.country != null) return false;
-        if (memberList != null ? !memberList.equals(that.memberList) : that.memberList != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
@@ -60,7 +60,7 @@ public class Tournament extends AbstractEntity{
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (country != null ? country.hashCode() : 0);
-        result = 31 * result + (memberList != null ? memberList.hashCode() : 0);
+        result = 31 * result + (clubList != null ? clubList.hashCode() : 0);
         return result;
     }
 

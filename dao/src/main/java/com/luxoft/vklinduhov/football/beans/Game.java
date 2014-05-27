@@ -9,8 +9,8 @@ import java.util.List;
 public class Game extends AbstractEntity{
 
     private Date date;
-    private String clubHome;
-    private String clubAway;
+    private Club clubHome;
+    private Club clubAway;
     private Integer homeGoals;
     private Integer awayGoals;
 
@@ -26,19 +26,19 @@ public class Game extends AbstractEntity{
         this.date = date;
     }
 
-    public String getClubHome() {
+    public Club getClubHome() {
         return clubHome;
     }
 
-    public void setClubHome(String clubHome) {
+    public void setClubHome(Club clubHome) {
         this.clubHome = clubHome;
     }
 
-    public String getClubAway() {
+    public Club getClubAway() {
         return clubAway;
     }
 
-    public void setClubAway(String clubAway) {
+    public void setClubAway(Club clubAway) {
         this.clubAway = clubAway;
     }
 

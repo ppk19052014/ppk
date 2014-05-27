@@ -11,6 +11,8 @@ public class Club extends AbstractEntity{
     private String name;
     private Date foundDate;
     private List<Player> playerList;
+    private String tournamentId;
+    private String tournamentName;
 
     public Club() {
     }
@@ -39,6 +41,22 @@ public class Club extends AbstractEntity{
         this.playerList = playerList;
     }
 
+    public String getTournamentId() {
+        return tournamentId;
+    }
+
+    public void setTournamentId(String tournamentId) {
+        this.tournamentId = tournamentId;
+    }
+
+    public String getTournamentName() {
+        return tournamentName;
+    }
+
+    public void setTournamentName(String tournamentName) {
+        this.tournamentName = tournamentName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,6 +67,9 @@ public class Club extends AbstractEntity{
         if (foundDate != null ? !foundDate.equals(club.foundDate) : club.foundDate != null) return false;
         if (name != null ? !name.equals(club.name) : club.name != null) return false;
         if (playerList != null ? !playerList.equals(club.playerList) : club.playerList != null) return false;
+        if (tournamentId != null ? !tournamentId.equals(club.tournamentId) : club.tournamentId != null) return false;
+        if (tournamentName != null ? !tournamentName.equals(club.tournamentName) : club.tournamentName != null)
+            return false;
 
         return true;
     }
@@ -58,6 +79,8 @@ public class Club extends AbstractEntity{
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (foundDate != null ? foundDate.hashCode() : 0);
         result = 31 * result + (playerList != null ? playerList.hashCode() : 0);
+        result = 31 * result + (tournamentId != null ? tournamentId.hashCode() : 0);
+        result = 31 * result + (tournamentName != null ? tournamentName.hashCode() : 0);
         return result;
     }
 
