@@ -36,12 +36,12 @@
                         <label><input type="text" name="name" value="${editClub.name}"/></label>
                     </td>
                 </tr>
-                <%--<tr>--%>
-                    <%--<td>Found Date:</td>--%>
-                    <%--<td>--%>
-                        <%--<label><input type="date" name="foundDate" value="${editClub.foundDate}"/></label>--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
+                <tr>
+                    <td>Found Date:</td>
+                    <td>
+                        <label><input type="text" name="foundDate" value="${editClub.foundDate}"/></label>
+                    </td>
+                </tr>
                 <tr>
                     <td><input type="submit" value="Edit"/></td>
                 </tr>

@@ -3,6 +3,7 @@ package com.luxoft.vklinduhov.football.beans;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,8 @@ public class Tournament extends AbstractEntity{
 
     @Field
     private String name;
+    @Field
+    private String membersCount;
     @Field
     private String country;
     @Field
@@ -38,12 +41,20 @@ public class Tournament extends AbstractEntity{
         this.country = country;
     }
 
-    public List<Club> getClubList() {
-        return clubList;
+    public String getMembersCount() {
+        return membersCount;
     }
 
-    public void setClubList(List<Club> clubList) {
-        this.clubList = clubList;
+    public boolean addClub(Club club){
+        Integer maxCount = Integer.valueOf(membersCount);
+        if(maxCount > clubList.size()){
+            if(clubList == null){
+                clubList = new ArrayList<Club>();
+            }
+            clubList.add(club);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -55,6 +66,7 @@ public class Tournament extends AbstractEntity{
 
         if (clubList != null ? !clubList.equals(that.clubList) : that.clubList != null) return false;
         if (country != null ? !country.equals(that.country) : that.country != null) return false;
+        if (membersCount != null ? !membersCount.equals(that.membersCount) : that.membersCount != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
@@ -63,6 +75,7 @@ public class Tournament extends AbstractEntity{
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (membersCount != null ? membersCount.hashCode() : 0);
         result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (clubList != null ? clubList.hashCode() : 0);
         return result;

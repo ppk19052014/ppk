@@ -13,8 +13,7 @@ public class Club extends AbstractEntity{
     @Field
     private String name;
     @Field
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date foundDate;
+    private String foundDate;
     @Field
     private List<Player> playerList;
     @Field
@@ -33,11 +32,11 @@ public class Club extends AbstractEntity{
         this.name = name;
     }
 
-    public Date getFoundDate() {
+    public String getFoundDate() {
         return foundDate;
     }
 
-    public void setFoundDate(Date foundDate) {
+    public void setFoundDate(String foundDate) {
         this.foundDate = foundDate;
     }
 

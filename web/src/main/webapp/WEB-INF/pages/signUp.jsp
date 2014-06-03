@@ -12,7 +12,7 @@
 <header class="header">
 
     <div class="header_user">
-        <a href="signUp" class="header_link">Sign up</a>
+        <a href="signIn" class="button">Sign in</a>
     </div>
 
     <div class="page_content-wrapper">
@@ -57,10 +57,11 @@
                     <td><label><input type="password" name="password"/> </label></td>
                 </tr>
                 <tr>
-                    <td><input class="button" type="submit" value="Sign in"/></td>
+                    <td><input class="button" type="submit" value="Sign up"/></td>
                 </tr>
             </table>
         </form>
+        <label>${result}</label>
     </section>
 </div>
 </body>

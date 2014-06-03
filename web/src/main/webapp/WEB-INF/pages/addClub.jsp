@@ -37,15 +37,14 @@
                         </label>
                     </td>
                 </tr>
-                <%--<tr>--%>
-                    <%--<td>Found Date:</td>--%>
-                    <%--<td>--%>
-                        <%--//todo: do this like others fields--%>
-                        <%--<label>--%>
-                            <%--<input type="date" name="foundDate" id="foundDate"/>--%>
-                        <%--</label>--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
+                <tr>
+                    <td>Found date:</td>
+                    <td>
+                        <label>
+                            <input type="text" name="foundDate"/>
+                        </label>
+                    </td>
+                </tr>
                 <tr>
                     <td>Tournament:</td>
                     <td>

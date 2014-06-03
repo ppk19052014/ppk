@@ -31,21 +31,21 @@
         <table>
             <tr>
                 <td>Name</td>
-                <%--<td>Position</td>--%>
-                <%--<td>Age</td>--%>
-                <%--<td>Height</td>--%>
-                <%--<td>Weight</td>--%>
-                <%--<td>Club</td>--%>
+                <td>Position</td>
+                <td>Birth Day</td>
+                <td>Height</td>
+                <td>Weight</td>
+                <td>Club</td>
             </tr>
             <c:forEach var="player" items="${allPlayers}">
                 <tr>
                     <label> <input type="text" name="playerId" value="${player.id}" style="display: none"></label>
                     <td>${player.name}</td>
-                    <%--<td>${player.position.getName}</td>--%>
-                    <%--<td>${player.age}</td>--%>
-                    <%--<td>${player.height}</td>--%>
-                    <%--<td>${player.weight}</td>--%>
-                    <%--<td>${player.clubName}</td>--%>
+                    <td>${player.position}</td>
+                    <td>${player.birthsDay}</td>
+                    <td>${player.height}</td>
+                    <td>${player.weight}</td>
+                    <td>${player.clubName}</td>
                     <td><input type="button" value="Edit" onclick="window.location.href='editPlayer.jsp?playerId=${player.id}'"></td>
                     <td><input type="submit" value="Delete"></td>
                 </tr>

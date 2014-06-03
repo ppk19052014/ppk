@@ -9,7 +9,7 @@
     <div class="page_content-wrapper">
 
         <div class="header_user">
-            <a href="mvc/signIn" class="header_link">Sign up</a>
+            <a href="mvc/signUp" class="header_link">Sign up</a>
             <a href="mvc/signIn" class="button">Sign in</a>
         </div>
 

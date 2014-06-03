@@ -8,53 +8,53 @@ import java.util.List;
 @Document(collection = "clubs")
 public class Game extends AbstractEntity{
 
-    private Date date;
-    private Club clubHome;
-    private Club clubAway;
-    private Integer homeGoals;
-    private Integer awayGoals;
+    private String date;
+    private String clubHomeId;
+    private String clubAwayId;
+    private String homeGoals;
+    private String awayGoals;
 
 
     public Game() {
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Club getClubHome() {
-        return clubHome;
+    public String getClubHome() {
+        return clubHomeId;
     }
 
-    public void setClubHome(Club clubHome) {
-        this.clubHome = clubHome;
+    public void setClubHome(String clubHome) {
+        this.clubHomeId = clubHome;
     }
 
-    public Club getClubAway() {
-        return clubAway;
+    public String getClubAway() {
+        return clubAwayId;
     }
 
-    public void setClubAway(Club clubAway) {
-        this.clubAway = clubAway;
+    public void setClubAway(String clubAway) {
+        this.clubAwayId = clubAway;
     }
 
-    public Integer getHomeGoals() {
+    public String getHomeGoals() {
         return homeGoals;
     }
 
-    public void setHomeGoals(Integer homeGoals) {
+    public void setHomeGoals(String homeGoals) {
         this.homeGoals = homeGoals;
     }
 
-    public Integer getAwayGoals() {
+    public String getAwayGoals() {
         return awayGoals;
     }
 
-    public void setAwayGoals(Integer awayGoals) {
+    public void setAwayGoals(String awayGoals) {
         this.awayGoals = awayGoals;
     }
 
@@ -66,8 +66,8 @@ public class Game extends AbstractEntity{
         Game game = (Game) o;
 
         if (awayGoals != null ? !awayGoals.equals(game.awayGoals) : game.awayGoals != null) return false;
-        if (clubAway != null ? !clubAway.equals(game.clubAway) : game.clubAway != null) return false;
-        if (clubHome != null ? !clubHome.equals(game.clubHome) : game.clubHome != null) return false;
+        if (clubAwayId != null ? !clubAwayId.equals(game.clubAwayId) : game.clubAwayId != null) return false;
+        if (clubHomeId != null ? !clubHomeId.equals(game.clubHomeId) : game.clubHomeId != null) return false;
         if (date != null ? !date.equals(game.date) : game.date != null) return false;
         if (homeGoals != null ? !homeGoals.equals(game.homeGoals) : game.homeGoals != null) return false;
 
@@ -77,8 +77,8 @@ public class Game extends AbstractEntity{
     @Override
     public int hashCode() {
         int result = date != null ? date.hashCode() : 0;
-        result = 31 * result + (clubHome != null ? clubHome.hashCode() : 0);
-        result = 31 * result + (clubAway != null ? clubAway.hashCode() : 0);
+        result = 31 * result + (clubHomeId != null ? clubHomeId.hashCode() : 0);
+        result = 31 * result + (clubAwayId != null ? clubAwayId.hashCode() : 0);
         result = 31 * result + (homeGoals != null ? homeGoals.hashCode() : 0);
         result = 31 * result + (awayGoals != null ? awayGoals.hashCode() : 0);
         return result;

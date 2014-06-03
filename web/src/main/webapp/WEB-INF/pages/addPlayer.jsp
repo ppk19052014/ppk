@@ -44,32 +44,26 @@
                     </label>
                     </td>
                 </tr>
-<%--                <tr>
-                    <td>Age:</td>
+                <tr>
+                    <td>Birth Day:</td>
                     <td>
-                        <label>
-                            <select name="age">
-                                <c:forEach var="i" begin="16" end="50">
-                                    <option value="${i}">${i}</option>
-                                </c:forEach>
-                            </select>
-                        </label>
+                        <label><input type="text" name="birthsDay"></label>
                     </td>
-                </tr>--%>
-                <%--<tr>--%>
-                    <%--<td>Height:</td>--%>
-                    <%--<td><label>--%>
-                        <%--<input type="text" name="height" value="180">--%>
-                    <%--</label>--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
-                <%--<tr>--%>
-                    <%--<td>Weight:</td>--%>
-                    <%--<td><label>--%>
-                        <%--<input type="text" name="weight" value="80">--%>
-                    <%--</label>--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
+                </tr>
+                <tr>
+                    <td>Height:</td>
+                    <td><label>
+                        <input type="text" name="height" value="180">
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Weight:</td>
+                    <td><label>
+                        <input type="text" name="weight" value="80">
+                    </label>
+                    </td>
+                </tr>
                 <tr>
                     <td>Club:</td>
                     <td>

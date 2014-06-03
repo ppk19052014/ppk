@@ -17,11 +17,11 @@ public class Player extends AbstractEntity{
     @Field
     private String position;
     @Field
-    private Date birthsDay;
+    private String birthsDay;
     @Field
-    private Integer height;
+    private String height;
     @Field
-    private Integer weight;
+    private String weight;
     @Field
     private String clubId;
     @Field
@@ -30,7 +30,7 @@ public class Player extends AbstractEntity{
     public Player() {
     }
 
-    public Player(String name, String position, Date birthsDay, Integer height, Integer weight, String clubId) {
+    public Player(String name, String position, String birthsDay, String height, String weight, String clubId) {
         this.name = name;
         this.position = position;
         this.birthsDay = birthsDay;
@@ -55,27 +55,27 @@ public class Player extends AbstractEntity{
         this.position = position;
     }
 
-    public Date getBirthsDay() {
+    public String getBirthsDay() {
         return birthsDay;
     }
 
-    public void setBirthsDay(Date birthsDay) {
+    public void setBirthsDay(String birthsDay) {
         this.birthsDay = birthsDay;
     }
 
-    public Integer getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(Integer height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
-    public Integer getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 

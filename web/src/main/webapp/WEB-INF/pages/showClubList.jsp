@@ -31,17 +31,13 @@
             <table>
                 <tr>
                     <td>Name</td>
-                    <%--<td>Found Date</td>--%>
+                    <td>Found Date</td>
                 </tr>
                 <c:forEach var="club" items="${allClubs}">
                     <tr>
                         <label> <input type="text" name="clubId" value="${club.id}" style="display: none"></label>
                         <td>${club.name}</td>
-                        <%--<td>--%>
-                            <%--<label>--%>
-                                <%--<input type="date" name="foundDate" value="${club.foundDate}">--%>
-                            <%--</label>--%>
-                        <%--</td>--%>
+                        <td>${club.foundDate}</td>
                         <td>
                             <input type="button" value="Edit"
                                    onclick="window.location.href='editClub.jsp?clubId=${club.id}'">
