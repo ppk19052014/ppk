@@ -12,6 +12,11 @@
 
 <header class="header">
     <div class="page_content-wrapper">
+
+        <div class="header_user">
+            <a href="signOut" class="header_link">Sign out</a>
+        </div>
+
         <div class="header_form">
             <form class="form-compact">
                 <div class="form-compact_inner-wrapper">

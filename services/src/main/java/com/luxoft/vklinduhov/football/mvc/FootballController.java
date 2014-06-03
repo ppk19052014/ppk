@@ -37,6 +37,13 @@ public class FootballController {
     private TournamentDaoImpl tournamentDao;
 
 
+
+    @RequestMapping(value = "main", method = RequestMethod.GET)
+    public void main() {
+    }
+
+
+
     @RequestMapping(value = "signUp", method = RequestMethod.POST)
     public ModelAndView signUp(HttpServletRequest servletRequest) {
         User user = new User();
@@ -67,16 +74,17 @@ public class FootballController {
     public void signUp() {
     }
 
-
     @RequestMapping(value = "signIn", method = RequestMethod.POST)
     public String signIn(HttpServletRequest servletRequest) {
         if (isAdmin(servletRequest)) {
+            servletRequest.getSession().setAttribute(SIGNED_IN, true);
+            servletRequest.getSession().setAttribute("admin", true);
             return "admin";
         }
         User user = findUser(servletRequest);
         if (user != null && user.getPassword().equals(servletRequest.getParameter("password"))) {
             servletRequest.getSession().setAttribute(SIGNED_IN, true);
-            return "homePage";
+            return "main";
         } else return "signIn";
     }
 
@@ -102,19 +110,29 @@ public class FootballController {
     public void signIn() {
     }
 
-
     @RequestMapping(value = "signOut", method = RequestMethod.GET)
     public String signOut(HttpServletRequest servletRequest) {
         servletRequest.getSession().setAttribute(SIGNED_IN, false);
         return "main";
     }
 
+
+
     @RequestMapping(value = "showTournaments", method = RequestMethod.GET)
     public ModelAndView showTournaments() {
-        List<Tournament> tournamentList = tournamentDao.getAll();
+        List<Tournament> allTournaments = tournamentDao.getAll();
         ModelAndView mav = new ModelAndView();
         mav.setViewName("showTournamentList");
-        mav.addObject("tournamentList", tournamentList);
+        mav.addObject("allTournaments", allTournaments);
+        return mav;
+    }
+
+    @RequestMapping(value = "showTournaments", method = RequestMethod.POST)
+    public ModelAndView removeTournament(@RequestParam String tournamentId) {
+        String name = tournamentDao.read(tournamentId).getName();
+        tournamentDao.delete(tournamentId);
+        ModelAndView mav = showTournaments();
+        mav.addObject("result", "Tournament " + name + " is deleted");
         return mav;
     }
 
@@ -148,14 +166,20 @@ public class FootballController {
         return "editTournament";
     }
 
-    @RequestMapping(value = "showTournaments", method = RequestMethod.POST)
-    public ModelAndView removeTournament(@RequestParam String tournamentId) {
-        String name = tournamentDao.read(tournamentId).getName();
-        tournamentDao.delete(tournamentId);
-        ModelAndView mav = showTournaments();
-        mav.addObject("result", "Tournament " + name + " is deleted");
+    @RequestMapping(value = "tournamentInfo", method = RequestMethod.GET)
+    public ModelAndView tournamentInfo(@RequestParam String tournamentId) {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("tournamentInfo");
+        Tournament tournament = tournamentDao.read(tournamentId);
+        mav.addObject("tournamentName", tournament.getName());
+        ArrayList<Club> clubs = new ArrayList<Club>();
+        for(int i = 0; i < tournament.getAllClubsId().size(); i++){
+            clubs.add(clubDao.read(tournament.getAllClubsId().get(i)));
+        }
+        mav.addObject("allClubs", clubs);
         return mav;
     }
+
 
 
     @RequestMapping(value = "showClubs", method = RequestMethod.GET)
@@ -164,6 +188,15 @@ public class FootballController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("showClubList");
         mav.addObject("allClubs", allClubs);
+        return mav;
+    }
+
+    @RequestMapping(value = "showClubs", method = RequestMethod.POST)
+    public ModelAndView removeClub(@RequestParam String clubId) {
+        String name = clubDao.read(clubId).getName();
+        clubDao.delete(clubId);
+        ModelAndView mav = showClubList();
+        mav.addObject("result", "Club " + name + " is deleted");
         return mav;
     }
 
@@ -179,17 +212,16 @@ public class FootballController {
 
     @RequestMapping(value = "addClub", method = RequestMethod.POST)
     public String addClub(@ModelAttribute Club club, ModelMap model) {
-        boolean isAdded = false;
+        clubDao.create(club);
         if (club.getTournamentId() != null) {
             Tournament tournament = tournamentDao.read(club.getTournamentId());
             club.setTournamentName(tournament.getName());
-            club.setTournamentId(tournament.getId());
-            isAdded = tournament.addClub(club);
+            tournament.addClubId(club.getId());
+            tournamentDao.update(tournament);
         }
+        String result = "Club " + club + " is added";
         List<Tournament> tournamentList = tournamentDao.getAll();
         model.addAttribute("tournamentList", tournamentList);
-        clubDao.create(club);
-        String result = "Club " + club + " is " + (isAdded ? "added" : "not added");
         model.addAttribute("result", result);
         return "addClub";
     }
@@ -211,14 +243,6 @@ public class FootballController {
         return "editClub";
     }
 
-    @RequestMapping(value = "showClubs", method = RequestMethod.POST)
-    public ModelAndView removeClub(@RequestParam String clubId) {
-        String name = clubDao.read(clubId).getName();
-        clubDao.delete(clubId);
-        ModelAndView mav = showClubList();
-        mav.addObject("result", "Club " + name + " is deleted");
-        return mav;
-    }
 
 
     @RequestMapping("showPlayers")
@@ -227,6 +251,15 @@ public class FootballController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("showPlayerList");
         mav.addObject("allPlayers", allPlayers);
+        return mav;
+    }
+
+    @RequestMapping(value = "showPlayers", method = RequestMethod.POST)
+    public ModelAndView removePlayer(@RequestParam String playerId) {
+        String name = playerDao.read(playerId).getName();
+        playerDao.delete(playerId);
+        ModelAndView mav = showPlayerList();
+        mav.addObject("result", "Player " + name + " is deleted");
         return mav;
     }
 
@@ -277,32 +310,5 @@ public class FootballController {
         playerDao.update(player);
         model.addAttribute("result", "Player " + player + " is edited");
         return "editPlayer";
-    }
-
-    @RequestMapping(value = "showPlayers", method = RequestMethod.POST)
-    public ModelAndView removePlayer(@RequestParam String playerId) {
-        String name = playerDao.read(playerId).getName();
-        playerDao.delete(playerId);
-        ModelAndView mav = showPlayerList();
-        mav.addObject("result", "Player " + name + " is deleted");
-        return mav;
-    }
-
-
-    @RequestMapping(value = "gamesAndTournaments", method = RequestMethod.GET)
-    public void gamesAndTournaments() {
-    }
-
-    @RequestMapping(value = "main", method = RequestMethod.GET)
-    public String main(HttpServletRequest servletRequest) {
-        Boolean attribute = (Boolean) servletRequest.getSession().getAttribute(SIGNED_IN);
-        if (attribute) {
-            return "mainSignedIn";
-        }
-        return "main";
-    }
-
-    @RequestMapping(value = "mainSignedIn", method = RequestMethod.GET)
-    public void mainSignedIn() {
     }
 }

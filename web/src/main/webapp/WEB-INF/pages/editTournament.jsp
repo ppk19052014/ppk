@@ -11,6 +11,11 @@
 
 <header class="header">
     <div class="page_content-wrapper">
+
+        <div class="header_user">
+            <a href="signOut" class="header_link">Sign out</a>
+        </div>
+
         <div class="header_form">
             <form class="form-compact">
                 <div class="form-compact_inner-wrapper">
@@ -35,12 +40,17 @@
                     <td>
                         <label><input type="text" name="name" value="${editTournament.name}"/></label>
                     </td>
-
                 </tr>
                 <tr>
-                    <td>Country</td>
+                    <td>Members count:</td>
                     <td>
-                        <label><input type="text" name="name" value="${editTournament.country}"/></label>
+                        <label><input type="text" name="membersCount" value="${editTournament.membersCount}"/></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td>
+                        <label><input type="text" name="country" value="${editTournament.membersCount}"/></label>
                     </td>
                 </tr>
                 <tr>

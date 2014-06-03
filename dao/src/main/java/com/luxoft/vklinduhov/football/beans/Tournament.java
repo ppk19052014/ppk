@@ -4,6 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class Tournament extends AbstractEntity{
     @Field
     private String country;
     @Field
-    private List<Club> clubList;
+    private List<String> clubListId;
 
     public Tournament() {
     }
@@ -45,13 +46,17 @@ public class Tournament extends AbstractEntity{
         return membersCount;
     }
 
-    public boolean addClub(Club club){
+    public void setMembersCount(String membersCount) {
+        this.membersCount = membersCount;
+    }
+
+    public boolean addClubId(String clubId){
         Integer maxCount = Integer.valueOf(membersCount);
-        if(maxCount > clubList.size()){
-            if(clubList == null){
-                clubList = new ArrayList<Club>();
-            }
-            clubList.add(club);
+        if(clubListId == null){
+            clubListId = new ArrayList<String>();
+        }
+        if(maxCount > clubListId.size()){
+            clubListId.add(clubId);
             return true;
         }
         return false;
@@ -64,7 +69,7 @@ public class Tournament extends AbstractEntity{
 
         Tournament that = (Tournament) o;
 
-        if (clubList != null ? !clubList.equals(that.clubList) : that.clubList != null) return false;
+        if (clubListId != null ? !clubListId.equals(that.clubListId) : that.clubListId != null) return false;
         if (country != null ? !country.equals(that.country) : that.country != null) return false;
         if (membersCount != null ? !membersCount.equals(that.membersCount) : that.membersCount != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
@@ -77,12 +82,16 @@ public class Tournament extends AbstractEntity{
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (membersCount != null ? membersCount.hashCode() : 0);
         result = 31 * result + (country != null ? country.hashCode() : 0);
-        result = 31 * result + (clubList != null ? clubList.hashCode() : 0);
+        result = 31 * result + (clubListId != null ? clubListId.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return name;
+    }
+
+    public List<String> getAllClubsId() {
+        return clubListId == null ? new ArrayList<String>() : new ArrayList<String>(clubListId);
     }
 }

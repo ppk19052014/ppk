@@ -36,7 +36,7 @@
             <ul class="menu_list">
                 <li class="menu_item"><a href="main" class="menu_link">Main</a></li>
                 <li class="menu_item"><a class="menu_link">Feed</a></li>
-                <li class="menu_item"><a href="gamesAndTournaments" class="menu_link">Games &amp Tournaments</a></li>
+                <li class="menu_item"><a href="showTournaments" class="menu_link">Games &amp Tournaments</a></li>
                 <li class="menu_item"><a class="menu_link">Video</a></li>
                 <li class="menu_item"><a class="menu_link">Photo</a></li>
                 <li class="menu_item"><a class="menu_link">Forum</a></li>

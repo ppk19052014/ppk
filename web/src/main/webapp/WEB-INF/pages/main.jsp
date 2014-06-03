@@ -9,8 +9,16 @@
     <div class="page_content-wrapper">
 
         <div class="header_user">
+            <%
+                Boolean isSignedId = (Boolean) session.getAttribute("signedIn");
+                if (isSignedId != null && isSignedId) {%>
+            <a href="signOut" class="header_link">Sign out</a>
+            <%} else {%>
             <a href="signUp" class="header_link">Sign up</a>
             <a href="signIn" class="button">Sign in</a>
+            <%
+                }
+            %>
         </div>
 
         <div class="header_logo-wrapper">
@@ -37,7 +45,7 @@
             <ul class="menu_list">
                 <li class="menu_item"><a href="main" class="menu_link">Main</a></li>
                 <li class="menu_item"><a class="menu_link">Feed</a></li>
-                <li class="menu_item"><a href="gamesAndTournaments" class="menu_link">Games &amp Tournaments</a></li>
+                <li class="menu_item"><a href="showTournaments" class="menu_link">Games &amp Tournaments</a></li>
                 <li class="menu_item"><a class="menu_link">Video</a></li>
                 <li class="menu_item"><a class="menu_link">Photo</a></li>
                 <li class="menu_item"><a class="menu_link">Forum</a></li>

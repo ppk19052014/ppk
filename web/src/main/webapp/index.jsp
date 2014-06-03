@@ -35,9 +35,9 @@
     <div class="menu_width-wrapper">
         <div class="menu_relative-wrapper">
             <ul class="menu_list">
-                <li class="menu_item"><a href="/index.jsp" class="menu_link">Main</a></li>
+                <li class="menu_item"><a href="mvc/main" class="menu_link">Main</a></li>
                 <li class="menu_item"><a class="menu_link">Feed</a></li>
-                <li class="menu_item"><a href="mvc/gamesAndTournaments" class="menu_link">Games &amp Tournaments</a></li>
+                <li class="menu_item"><a href="mvc/showTournaments" class="menu_link">Games &amp Tournaments</a></li>
                 <li class="menu_item"><a class="menu_link">Video</a></li>
                 <li class="menu_item"><a class="menu_link">Photo</a></li>
                 <li class="menu_item"><a class="menu_link">Forum</a></li>
