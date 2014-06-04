@@ -32,7 +32,7 @@
                         <button class="button-search" type="submit">Search</button>
                     </div>
                     <div class="form-compact_field-placeholder">
-                        <input type="text" class="form-compact_query" placeholder="Input your search">
+                        <input type="text" class="form-compact_query" placeholder="Input your search"/>
                     </div>
                 </div>
             </form>
@@ -54,7 +54,7 @@
     </div>
 </nav>
 <div class="background" style="height: 2000px">
-    <section class="page" style="height: 250px; width: 600px">
+    <section class="page">
         <form method="post">
             <table class="tournamentsTable">
                 <tr class="tableHeader">
@@ -67,7 +67,7 @@
                 </tr>
                 <c:forEach var="player" items="${allPlayers}">
                     <tr class="tableRow">
-                        <label> <input type="text" name="playerId" value="${player.id}" style="display: none"></label>
+                        <label> <input type="text" name="playerId" value="${player.id}" style="display: none"/></label>
                         <td>${player.name}</td>
                         <td>${player.position}</td>
                         <td>${player.birthsDay}</td>
@@ -77,8 +77,8 @@
                         <%
                             Boolean isAdmin = (Boolean) session.getAttribute("admin");
                             if (isAdmin != null && isAdmin) {%>
-                        <td><input type="button" value="Edit" onclick="window.location.href='editPlayer.jsp?playerId=${player.id}'"></td>
-                        <td><input type="submit" value="Delete"></td>
+                        <td><input type="button" value="Edit" onclick="window.location.href='editPlayer.jsp?playerId=${player.id}'"/></td>
+                        <td><input type="submit" value="Delete"/></td>
                         <%}%>
                     </tr>
                 </c:forEach>

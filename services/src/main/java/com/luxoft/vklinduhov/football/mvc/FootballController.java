@@ -113,6 +113,7 @@ public class FootballController {
     @RequestMapping(value = "signOut", method = RequestMethod.GET)
     public String signOut(HttpServletRequest servletRequest) {
         servletRequest.getSession().setAttribute(SIGNED_IN, false);
+        servletRequest.getSession().setAttribute("admin", false);
         return "main";
     }
 
@@ -231,16 +232,20 @@ public class FootballController {
 
         ModelAndView mav = new ModelAndView();
         mav.setViewName("editClub");
+        mav.addObject("tournamentList", tournamentDao.getAll());
         mav.addObject("editClub", clubDao.read(clubId));
 
         return mav;
     }
 
     @RequestMapping(value = "editClub", method = RequestMethod.POST)
-    public String editClub(@ModelAttribute Club club, ModelMap model) {
+    public ModelAndView editClub(@ModelAttribute Club club) {
         clubDao.update(club);
-        model.addAttribute("result", "Club " + club + " is edited");
-        return "editClub";
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("editClub");
+        mav.addObject("tournamentList", tournamentDao.getAll());
+        mav.addObject("result", "Club " + club + " is edited");
+        return mav;
     }
 
 
@@ -275,16 +280,13 @@ public class FootballController {
 
     @RequestMapping(value = "addPlayer", method = RequestMethod.POST)
     public String addPlayer(@ModelAttribute("player") Player player, ModelMap model) {
+        playerDao.create(player);
         if (player.getClubId() != null) {
             Club club = clubDao.read(player.getClubId());
             player.setClubName(club.getName());
-            List<Player> playerList = club.getPlayerList();
-            if (playerList == null) {
-                playerList = new ArrayList<Player>();
-            }
-            playerList.add(player);
+            club.addPlayerId(player.getId());
+            clubDao.update(club);
         }
-        playerDao.create(player);
         List<Club> clubList = clubDao.getAll();
         model.addAttribute("clubList", clubList);
         model.addAttribute("result", "Player " + player + " is added");
@@ -293,22 +295,20 @@ public class FootballController {
 
     @RequestMapping(value = "editPlayer", method = RequestMethod.GET)
     public ModelAndView setEditPlayerForm(@RequestParam String playerId) {
-
         ModelAndView mav = new ModelAndView();
         mav.setViewName("editPlayer");
-
-        List<Club> allClubs = clubDao.getAll();
-
-        mav.addObject("clubList", allClubs);
+        mav.addObject("clubList", clubDao.getAll());
         mav.addObject("editPlayer", playerDao.read(playerId));
-
         return mav;
     }
 
     @RequestMapping(value = "editPlayer", method = RequestMethod.POST)
-    public String editPlayer(@ModelAttribute Player player, ModelMap model) {
+    public ModelAndView editPlayer(@ModelAttribute Player player) {
         playerDao.update(player);
-        model.addAttribute("result", "Player " + player + " is edited");
-        return "editPlayer";
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("editPlayer");
+        mav.addObject("clubList", clubDao.getAll());
+        mav.addObject("result", "Player " + player + " is edited");
+        return mav;
     }
 }

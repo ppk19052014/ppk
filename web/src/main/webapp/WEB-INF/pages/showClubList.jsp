@@ -54,7 +54,7 @@
     </div>
 </nav>
 <div class="background" style="height: 2000px">
-    <section class="page" style="height: 250px; width: 600px">
+    <section class="page">
         <form method="post">
             <table class="tournamentsTable">
                 <tr class="tableHeader">
@@ -63,14 +63,14 @@
                 </tr>
                 <c:forEach var="club" items="${allClubs}">
                     <tr class="tableRow">
-                        <label> <input type="text" name="clubId" value="${club.id}" style="display: none"></label>
+                        <label> <input type="text" name="clubId" value="${club.id}" style="display: none"/></label>
                         <td>${club.name}</td>
                         <td>${club.foundDate}</td>
                         <%
                             Boolean isAdmin = (Boolean) session.getAttribute("admin");
                             if (isAdmin != null && isAdmin) {%>
-                        <td><input type="button" value="Edit" onclick="window.location.href='editClub.jsp?clubId=${club.id}'"></td>
-                        <td><input type="submit" value="Delete"></td>
+                        <td><input type="button" value="Edit" onclick="window.location.href='editClub.jsp?clubId=${club.id}'"/></td>
+                        <td><input type="submit" value="Delete"/></td>
                         <%}%>
                     </tr>
                 </c:forEach>

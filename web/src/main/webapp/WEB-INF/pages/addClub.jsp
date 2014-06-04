@@ -24,7 +24,7 @@
                         <button class="button-search" type="submit">Search</button>
                     </div>
                     <div class="form-compact_field-placeholder">
-                        <input type="text" class="form-compact_query" placeholder="Input your search">
+                        <input type="text" class="form-compact_query" placeholder="Input your search"/>
                     </div>
                 </div>
             </form>

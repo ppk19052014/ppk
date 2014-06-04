@@ -24,7 +24,7 @@
                         <button class="button-search" type="submit">Search</button>
                     </div>
                     <div class="form-compact_field-placeholder">
-                        <input type="text" class="form-compact_query" placeholder="Input your search">
+                        <input type="text" class="form-compact_query" placeholder="Input your search"/>
                     </div>
                 </div>
             </form>
@@ -38,34 +38,34 @@
                 <tr>
                     <td>Name:</td>
                     <td><label>
-                        <input type="text" name="name">
+                        <input type="text" name="name"/>
                     </label>
                     </td>
                 </tr>
                 <tr>
                     <td>Position:</td>
                     <td><label>
-                        <input type="text" name="position">
+                        <input type="text" name="position"/>
                     </label>
                     </td>
                 </tr>
                 <tr>
                     <td>Birth Day:</td>
                     <td>
-                        <label><input type="text" name="birthsDay"></label>
+                        <label><input type="text" name="birthsDay"/></label>
                     </td>
                 </tr>
                 <tr>
                     <td>Height:</td>
                     <td><label>
-                        <input type="text" name="height" value="180">
+                        <input type="text" name="height" value="180"/>
                     </label>
                     </td>
                 </tr>
                 <tr>
                     <td>Weight:</td>
                     <td><label>
-                        <input type="text" name="weight" value="80">
+                        <input type="text" name="weight" value="80"/>
                     </label>
                     </td>
                 </tr>
@@ -82,7 +82,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Add"></td>
+                    <td><input type="submit" value="Add"/></td>
                 </tr>
             </table>
         </form:form>

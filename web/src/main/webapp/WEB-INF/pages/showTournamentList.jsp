@@ -34,7 +34,7 @@
                         <button class="button-search" type="submit">Search</button>
                     </div>
                     <div class="form-compact_field-placeholder">
-                        <input type="text" class="form-compact_query" placeholder="Input your search">
+                        <input type="text" class="form-compact_query" placeholder="Input your search"/>
                     </div>
                 </div>
             </form>
@@ -73,8 +73,8 @@
                         <%
                             Boolean isAdmin = (Boolean) session.getAttribute("admin");
                             if (isAdmin != null && isAdmin) {%>
-                        <td><input type="button" value="Edit" onclick="window.location.href='editTournament.jsp?tournamentId=${tournament.id}'"></td>
-                        <td><input type="submit" value="Delete"></td>
+                        <td><input type="button" value="Edit" onclick="window.location.href='editTournament.jsp?tournamentId=${tournament.id}'"/></td>
+                        <td><input type="submit" value="Delete"/></td>
                         <%}%>
                     </tr>
                 </c:forEach>

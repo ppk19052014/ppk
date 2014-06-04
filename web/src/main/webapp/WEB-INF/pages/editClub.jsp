@@ -23,7 +23,7 @@
                         <button class="button-search" type="submit">Search</button>
                     </div>
                     <div class="form-compact_field-placeholder">
-                        <input type="text" class="form-compact_query" placeholder="Input your search">
+                        <input type="text" class="form-compact_query" placeholder="Input your search"/>
                     </div>
                 </div>
             </form>
@@ -35,7 +35,7 @@
         <form method="post">
             <table>
                 <tr>
-                    <label><input type="text" name="id" value="${editClub.id}" style="display:none;"></label>
+                    <label><input type="text" name="id" value="${editClub.id}" style="display:none;"/></label>
                     <td>Name:</td>
                     <td>
                         <label><input type="text" name="name" value="${editClub.name}"/></label>
@@ -45,6 +45,25 @@
                     <td>Found Date:</td>
                     <td>
                         <label><input type="text" name="foundDate" value="${editClub.foundDate}"/></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tournament:</td>
+                    <td>
+                        <label>
+                            <select name="tournamentId">
+                                <c:forEach var="tournament" items="${tournamentList}">
+                                    <c:choose>
+                                        <c:when test="${editClub.clubId == tournament.id}">
+                                            <option value="${tournament.id}" selected>${tournament.name}</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="${tournament.id}">${tournament.name}</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                            </select>
+                        </label>
                     </td>
                 </tr>
                 <tr>

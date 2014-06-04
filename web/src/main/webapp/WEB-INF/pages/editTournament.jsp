@@ -23,7 +23,7 @@
                         <button class="button-search" type="submit">Search</button>
                     </div>
                     <div class="form-compact_field-placeholder">
-                        <input type="text" class="form-compact_query" placeholder="Input your search">
+                        <input type="text" class="form-compact_query" placeholder="Input your search"/>
                     </div>
                 </div>
             </form>
@@ -31,11 +31,11 @@
     </div>
 </header>
 <div class="background" style="height: 2000px">
-    <section class="page" style="height: 250px; width: 600px">
+    <section class="page">
         <form method="post">
             <table>
                 <tr>
-                    <label><input type="text" name="id" value="${editTournament.id}" style="display:none;"></label>
+                    <label><input type="text" name="id" value="${editTournament.id}" style="display:none;"/></label>
                     <td>Name:</td>
                     <td>
                         <label><input type="text" name="name" value="${editTournament.name}"/></label>

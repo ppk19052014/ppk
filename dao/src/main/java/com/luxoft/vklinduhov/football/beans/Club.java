@@ -4,6 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Club extends AbstractEntity{
     @Field
     private String foundDate;
     @Field
-    private List<Player> playerList;
+    private List<String> playerListId;
     @Field
     private String tournamentId;
     @Field
@@ -40,12 +41,12 @@ public class Club extends AbstractEntity{
         this.foundDate = foundDate;
     }
 
-    public List<Player> getPlayerList() {
-        return playerList;
+    public List<String> getPlayerListId() {
+        return playerListId;
     }
 
-    public void setPlayerList(List<Player> playerList) {
-        this.playerList = playerList;
+    public void setPlayerListId(List<String> playerList) {
+        this.playerListId = playerList;
     }
 
     public String getTournamentId() {
@@ -64,6 +65,13 @@ public class Club extends AbstractEntity{
         this.tournamentName = tournamentName;
     }
 
+    public void addPlayerId(String playerId){
+        if(playerListId == null){
+            playerListId = new ArrayList<String>();
+        }
+        playerListId.add(playerId);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,7 +81,7 @@ public class Club extends AbstractEntity{
 
         if (foundDate != null ? !foundDate.equals(club.foundDate) : club.foundDate != null) return false;
         if (name != null ? !name.equals(club.name) : club.name != null) return false;
-        if (playerList != null ? !playerList.equals(club.playerList) : club.playerList != null) return false;
+        if (playerListId != null ? !playerListId.equals(club.playerListId) : club.playerListId != null) return false;
         if (tournamentId != null ? !tournamentId.equals(club.tournamentId) : club.tournamentId != null) return false;
         if (tournamentName != null ? !tournamentName.equals(club.tournamentName) : club.tournamentName != null)
             return false;
@@ -85,7 +93,7 @@ public class Club extends AbstractEntity{
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (foundDate != null ? foundDate.hashCode() : 0);
-        result = 31 * result + (playerList != null ? playerList.hashCode() : 0);
+        result = 31 * result + (playerListId != null ? playerListId.hashCode() : 0);
         result = 31 * result + (tournamentId != null ? tournamentId.hashCode() : 0);
         result = 31 * result + (tournamentName != null ? tournamentName.hashCode() : 0);
         return result;
@@ -94,5 +102,9 @@ public class Club extends AbstractEntity{
     @Override
     public String toString() {
         return name;
+    }
+
+    public List<String> getAllPlayersId() {
+        return playerListId == null ? new ArrayList<String>() : new ArrayList<String>(playerListId);
     }
 }

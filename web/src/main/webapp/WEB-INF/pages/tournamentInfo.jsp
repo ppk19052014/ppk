@@ -33,7 +33,7 @@
                         <button class="button-search" type="submit">Search</button>
                     </div>
                     <div class="form-compact_field-placeholder">
-                        <input type="text" class="form-compact_query" placeholder="Input your search">
+                        <input type="text" class="form-compact_query" placeholder="Input your search"/>
                     </div>
                 </div>
             </form>
@@ -66,7 +66,7 @@
             <%int i = 0;%>
             <c:forEach var="club" items="${allClubs}">
                 <tr class="tableRow">
-                    <label> <input type="text" name="clubId" value="${club.id}" style="display: none"></label>
+                    <label> <input type="text" name="clubId" value="${club.id}" style="display: none"/></label>
                     <td><%=++i%></td>
                     <td>${club.name}</td>
                 </tr>
