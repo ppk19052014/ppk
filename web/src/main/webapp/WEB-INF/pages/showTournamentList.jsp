@@ -1,3 +1,4 @@
+<%--@elvariable id="result" type="java.lang.String"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -64,6 +65,7 @@
                     <td>Members Count</td>
                     <td>Country</td>
                 </tr>
+                <%--@elvariable id="allTournaments" type="java.util.List"--%>
                 <c:forEach var="tournament" items="${allTournaments}">
                     <tr class="tableRow">
                         <td style="display: none"><label><input type="text" name="tournamentId" value="${tournament.id}"/></label></td>
