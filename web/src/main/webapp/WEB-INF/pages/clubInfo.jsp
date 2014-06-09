@@ -58,23 +58,27 @@
 </nav>
 <div class="background">
     <section class="page" style="height: auto">
-        <label> <input type="text" name="tournamentId" value="${tournament.id}" style="display: none"/></label>
-        <label>${tournament.name}</label>
+        <label>${club.name}</label>
+
         <table class="tournamentsTable">
             <tr class="tableHeader">
-                <td>№</td>
-                <td>Club name</td>
+                <td>Name</td>
+                <td>Position</td>
+                <td>Birth Day</td>
+                <td>Height</td>
+                <td>Weight</td>
             </tr>
-            <%int i = 0;%>
-            <c:forEach var="club" items="${allClubs}">
+            <c:forEach var="player" items="${allPlayers}">
                 <tr class="tableRow">
-                    <label> <input type="text" name="clubId" value="${club.id}" style="display: none"/></label>
-                    <td><%=++i%></td>
-                    <td onclick="window.location.href='clubInfo.jsp?clubId=${club.id}'">${club.name}</td>
+                    <label> <input type="text" name="playerId" value="${player.id}" style="display: none"/></label>
+                    <td>${player.name}</td>
+                    <td>${player.position}</td>
+                    <td>${player.birthsDay}</td>
+                    <td>${player.height}</td>
+                    <td>${player.weight}</td>
                 </tr>
             </c:forEach>
         </table>
-            <button class="button" onclick="window.location.href='seasonResult.jsp?tournamentId=${tournament.id}'">Generate results</button>
 
     </section>
 </div>

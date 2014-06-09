@@ -215,7 +215,7 @@ padding-left: 20px;
     transition: 220ms ease-in-out;
 }
 
-.menu_link:hover {
+.menu_link:hover, tr:hover, td:hover {
     background-color: #069cfa;
     -webkit-transition: 220ms ease-in-out;
     -moz-transition: 220ms ease-in-out;
@@ -297,3 +297,10 @@ padding-left: 20px;
     vertical-align: middle;
     border-top: 1px solid #4b5066;
 }
+
+.tourRow{
+    background-color: rgba(0, 100, 192, 0.76);
+    color: aliceblue;
+    font-style: italic;
+}
+

@@ -11,11 +11,18 @@ public class Game extends AbstractEntity{
     private String date;
     private String clubHomeId;
     private String clubAwayId;
+    private String clubHomeName;
+    private String clubAwayName;
     private String homeGoals;
     private String awayGoals;
 
 
     public Game() {
+    }
+
+    public Game(String clubHomeId, String clubAwayId) {
+        this.clubHomeId = clubHomeId;
+        this.clubAwayId = clubAwayId;
     }
 
     public String getDate() {
@@ -58,34 +65,41 @@ public class Game extends AbstractEntity{
         this.awayGoals = awayGoals;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Game game = (Game) o;
-
-        if (awayGoals != null ? !awayGoals.equals(game.awayGoals) : game.awayGoals != null) return false;
-        if (clubAwayId != null ? !clubAwayId.equals(game.clubAwayId) : game.clubAwayId != null) return false;
-        if (clubHomeId != null ? !clubHomeId.equals(game.clubHomeId) : game.clubHomeId != null) return false;
-        if (date != null ? !date.equals(game.date) : game.date != null) return false;
-        if (homeGoals != null ? !homeGoals.equals(game.homeGoals) : game.homeGoals != null) return false;
-
-        return true;
+    public String getClubHomeId() {
+        return clubHomeId;
     }
 
-    @Override
-    public int hashCode() {
-        int result = date != null ? date.hashCode() : 0;
-        result = 31 * result + (clubHomeId != null ? clubHomeId.hashCode() : 0);
-        result = 31 * result + (clubAwayId != null ? clubAwayId.hashCode() : 0);
-        result = 31 * result + (homeGoals != null ? homeGoals.hashCode() : 0);
-        result = 31 * result + (awayGoals != null ? awayGoals.hashCode() : 0);
-        return result;
+    public void setClubHomeId(String clubHomeId) {
+        this.clubHomeId = clubHomeId;
+    }
+
+    public String getClubAwayId() {
+        return clubAwayId;
+    }
+
+    public void setClubAwayId(String clubAwayId) {
+        this.clubAwayId = clubAwayId;
+    }
+
+    public String getClubHomeName() {
+        return clubHomeName;
+    }
+
+    public void setClubHomeName(String clubHomeName) {
+        this.clubHomeName = clubHomeName;
+    }
+
+    public String getClubAwayName() {
+        return clubAwayName;
+    }
+
+    public void setClubAwayName(String clubAwayName) {
+        this.clubAwayName = clubAwayName;
     }
 
     @Override
     public String toString() {
-        return  date + ": " + homeGoals + " - " + awayGoals;
+        return clubHomeName + " " + homeGoals + " - " + awayGoals + " " + clubAwayName ;
     }
+
 }

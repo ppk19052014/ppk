@@ -1,5 +1,6 @@
 package com.luxoft.vklinduhov.football.dao.impl;
 
+import com.luxoft.vklinduhov.football.beans.Tournament;
 import com.luxoft.vklinduhov.football.beans.User;
 import com.luxoft.vklinduhov.football.dao.Dao;
 import org.springframework.context.ApplicationContext;
@@ -55,5 +56,13 @@ public class UserDaoImpl implements Dao<User> {
     @Override
     public List<User> getAll() {
         return mongoOperation.findAll(User.class);
+    }
+
+    @Override
+    public void deleteAll() {
+        List<User> userList = getAll();
+        for (int i = 0; i < userList.size(); i++) {
+            delete(userList.get(i).getId());
+        }
     }
 }

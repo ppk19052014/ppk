@@ -56,6 +56,14 @@ public class ClubDaoImpl implements Dao<Club> {
     }
 
     @Override
+    public void deleteAll() {
+        List<Club> clubList = getAll();
+        for (int i = 0; i < clubList.size(); i++) {
+            delete(clubList.get(i).getId());
+        }
+    }
+
+    @Override
     public List<Club> getAll() {
         return mongoOperation.findAll(Club.class);
     }

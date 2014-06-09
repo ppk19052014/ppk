@@ -65,7 +65,6 @@
                     <td>Members Count</td>
                     <td>Country</td>
                 </tr>
-                <%--@elvariable id="allTournaments" type="java.util.List"--%>
                 <c:forEach var="tournament" items="${allTournaments}">
                     <tr class="tableRow">
                         <td style="display: none"><label><input type="text" name="tournamentId" value="${tournament.id}"/></label></td>
@@ -78,6 +77,7 @@
                         <td><input type="button" value="Edit" onclick="window.location.href='editTournament.jsp?tournamentId=${tournament.id}'"/></td>
                         <td><input type="submit" value="Delete"/></td>
                         <%}%>
+                        <td><a href="generateTournamentData?tournamentId=${tournament.id}" class="button">Generate data</a></td>
                     </tr>
                 </c:forEach>
             </table>

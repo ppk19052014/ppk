@@ -50,7 +50,7 @@
                 <tr>
                     <td>Country:</td>
                     <td>
-                        <label><input type="text" name="country" value="${editTournament.membersCount}"/></label>
+                        <label><input type="text" name="country" value="${editTournament.country}"/></label>
                     </td>
                 </tr>
                 <tr>

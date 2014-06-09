@@ -94,4 +94,12 @@ public class Tournament extends AbstractEntity{
     public List<String> getAllClubsId() {
         return clubListId == null ? new ArrayList<String>() : new ArrayList<String>(clubListId);
     }
+
+    public List<String> getClubListId() {
+        return clubListId;
+    }
+
+    public void setClubListId(List<String> clubListId) {
+        this.clubListId = clubListId;
+    }
 }

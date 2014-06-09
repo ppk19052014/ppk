@@ -58,23 +58,67 @@
 </nav>
 <div class="background">
     <section class="page" style="height: auto">
-        <label> <input type="text" name="tournamentId" value="${tournament.id}" style="display: none"/></label>
-        <label>${tournament.name}</label>
+
+        Tournament result table for ${season.years}
         <table class="tournamentsTable">
             <tr class="tableHeader">
                 <td>№</td>
-                <td>Club name</td>
+                <td>Club</td>
+                <td>G</td>
+                <td>W</td>
+                <td>D</td>
+                <td>L</td>
+                <td>GS</td>
+                <td>GM</td>
+                <td>GD</td>
+                <td>Pt</td>
             </tr>
-            <%int i = 0;%>
-            <c:forEach var="club" items="${allClubs}">
-                <tr class="tableRow">
-                    <label> <input type="text" name="clubId" value="${club.id}" style="display: none"/></label>
-                    <td><%=++i%></td>
-                    <td onclick="window.location.href='clubInfo.jsp?clubId=${club.id}'">${club.name}</td>
+            <tr class="tourRow">
+                <td>1.</td>
+                <td onclick="window.location.href='clubInfo.jsp?clubId=${seasonResultList[0].clubId}'">${seasonResultList[0].clubName}</td>
+                <td>${seasonResultList[0].getGamesCount()}</td>
+                <td>${seasonResultList[0].winCount}</td>
+                <td>${seasonResultList[0].drawCount}</td>
+                <td>${seasonResultList[0].loseCount}</td>
+                <td>${seasonResultList[0].getGoalScored()}</td>
+                <td>${seasonResultList[0].getGoalMissed()}</td>
+                <td>${seasonResultList[0].getGoalDifference()}</td>
+                <td>${seasonResultList[0].getPoints()}</td>
+            </tr>
+            <c:forEach var="i" begin="1" end="${fn:length(seasonResultList)-1}">
+                <tr>
+                    <td>${i+1}.</td>
+                    <td onclick="window.location.href='clubInfo.jsp?clubId=${seasonResultList[i].clubId}'">${seasonResultList[i].clubName}</td>
+                    <td>${seasonResultList[i].getGamesCount()}</td>
+                    <td>${seasonResultList[i].winCount}</td>
+                    <td>${seasonResultList[i].drawCount}</td>
+                    <td>${seasonResultList[i].loseCount}</td>
+                    <td>${seasonResultList[i].getGoalScored()}</td>
+                    <td>${seasonResultList[i].getGoalMissed()}</td>
+                    <td>${seasonResultList[i].getGoalDifference()}</td>
+                    <td>${seasonResultList[i].getPoints()}</td>
                 </tr>
             </c:forEach>
         </table>
-            <button class="button" onclick="window.location.href='seasonResult.jsp?tournamentId=${tournament.id}'">Generate results</button>
+
+        <b>Our congratulations for ${seasonResultList[0].clubName}, they are the CHAMPIONS!!!</b>
+
+        <table class="tournamentsTable">
+            <tr class="tableHeader">
+                <td>Game calendar for ${season.years}</td>
+            </tr>
+            <%int j = 0;%>
+            <c:forEach var="tour" items="${season.tourList}">
+                <tr class="tourRow">
+                    <td>Tour <%=++j%> ${tour[0].date}:</td>
+                </tr>
+                <c:forEach var="game" items="${tour}">
+                    <tr>
+                        <td>${game}</td>
+                    </tr>
+                </c:forEach>
+            </c:forEach>
+        </table>
 
     </section>
 </div>

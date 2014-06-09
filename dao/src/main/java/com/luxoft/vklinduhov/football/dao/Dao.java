@@ -21,4 +21,6 @@ public interface Dao <T> {
     void update(T editClub);
 
     void delete(String id);
+
+    void deleteAll();
 }

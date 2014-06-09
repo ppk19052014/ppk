@@ -56,6 +56,14 @@ public class TournamentDaoImpl implements Dao<Tournament> {
     }
 
     @Override
+    public void deleteAll() {
+        List<Tournament> tournamentList = getAll();
+        for (int i = 0; i < tournamentList.size(); i++) {
+            delete(tournamentList.get(i).getId());
+        }
+    }
+
+    @Override
     public List<Tournament> getAll() {
         return mongoOperation.findAll(Tournament.class);
     }

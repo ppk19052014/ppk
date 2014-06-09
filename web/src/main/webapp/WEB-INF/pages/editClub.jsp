@@ -54,7 +54,7 @@
                             <select name="tournamentId">
                                 <c:forEach var="tournament" items="${tournamentList}">
                                     <c:choose>
-                                        <c:when test="${editClub.clubId == tournament.id}">
+                                        <c:when test="${editClub.tournamentId == tournament.id}">
                                             <option value="${tournament.id}" selected>${tournament.name}</option>
                                         </c:when>
                                         <c:otherwise>

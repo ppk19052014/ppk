@@ -53,6 +53,14 @@ public class PlayerDaoImpl implements Dao<Player> {
     }
 
     @Override
+    public void deleteAll() {
+        List<Player> playerList = getAll();
+        for (int i = 0; i < playerList.size(); i++) {
+            delete(playerList.get(i).getId());
+        }
+    }
+
+    @Override
     public List<Player> getAll() {
         return mongoOperation.findAll(Player.class);
     }
